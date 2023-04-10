@@ -6,14 +6,21 @@ import Main from './Pages/Main.js';
 
 
 
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+    <App/>
+
     <BrowserRouter>
     
     <Header />
     <Main />
     
     </BrowserRouter>
+
 );
 
 
