@@ -17,8 +17,8 @@ const Header = () => {
       <Link to="../Pages/Test.js.js" id='link' className='link'>Exam</Link>
       <Link to="../Pages/About_Us.js" id='link' className='link'>About Us</Link>
       <Link to="../Pages/Contact_Us.js" id='link' className='link'>Contact Us</Link>
-      <Link to="../Pages/Sign_in.js" id='link_btn1'><button> Sign in </button></Link>
-      <Link to="../Pages/Sign_up.js" id='link_btn2'><button> Sign up </button></Link>
+      <Link to="/login" id='link_btn1'><button> Sign in </button></Link>
+      <Link to="/signup" id='link_btn2'><button> Sign up </button></Link>
 
         </header>
         
