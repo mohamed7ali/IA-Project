@@ -13,6 +13,19 @@ function App() {
   <Route path='/signup'element={<SignUp />}> </Route>
 </Routes>
 </BrowserRouter>
+
+
+import "./App.css";
+
+
+const App = () => {
+  return (
+    <>
+    <h1>Hello</h1>
+    
+    </>
+
+
   );
 }
 
