@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter , Routes, Route, Link } from "react-router-dom";
 import Main from "./Pages/Main";
+import QuizInstructions from "./Components/quiz/QuizInstruction";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 <Route path='/'element={<Main />}> </Route>
  <Route path='/login'element={<Login />}> </Route>
   <Route path='/signup'element={<SignUp />}> </Route>
+  <Route path='/QuizeInstruction'element={<QuizInstructions />}> </Route>
 </Routes>
 </BrowserRouter>
     
