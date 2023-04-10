@@ -3,8 +3,11 @@ import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Style_Pages/quizinstruction.css'
 import quiz from '../../Style_Pages/img/quiz.jpg'
+import Header from "../Header";
 const QuizInstructions=()=>(
-<div className="inst" >
+    <>
+    <Header/>
+    <div className="inst" >
 <div className="instructions container">
         <h1>How to solve quiz? </h1> 
         <p className="p1">Ensure you read this guide from start to finsh.</p>
@@ -27,10 +30,15 @@ const QuizInstructions=()=>(
             </li>
         </ul>
         <h2>Good Luck ..</h2><h2 className="p2">&#128512;</h2><br/>
+
+        <p className='text-center mt-2'>
         <Link to="/Exam" className='exm' >Go to Exam Page?</Link><br/>
-        <Link to="/" className='exm' >Back</Link>
+      
+             </p>
     </div>
 </div>
+
+    </>
 
 );
 export default QuizInstructions;
