@@ -7,7 +7,7 @@ export default class Login extends Component {
     return (
 <>
 <Header/>
-<div className=' login template  d-flex  justify-content-center align-items-center  vh-100 '  >
+<div className=' login template  d-flex  justify-content-center align-items-center  vh-100 ' >
             <div className='  form_container p-5 rounded 'style={{border: '3px solid black',backgroundColor:'white'}}>
             <form>
                 <h3 className='text-center'>Sign In</h3>
