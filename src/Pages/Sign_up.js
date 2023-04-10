@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import '../Style_Pages/Sign_in.css'
 import { Link } from "react-router-dom"
+import Header from '../Components/Header'
 
 export default class SignUp extends Component {
   render() {
     return (
-      <div className=' signup template  d-flex  justify-content-center align-items-center  vh-100 'style={{backgroundColor:'rgb(55, 2, 104)'}}>
+      <>
+      <Header/>
+            <div className=' signup template  d-flex  justify-content-center align-items-center  vh-100 '>
       <div className='  form_container p-5 rounded text-white 'style={{border: '3px solid black',backgroundColor:'white'}}>
       <form>
           <h3 className='text-center text-dark'>Sign Up</h3>
@@ -34,6 +37,8 @@ export default class SignUp extends Component {
           </form>
       </div>
   </div>
+      </>
+
     )
   }
 }
