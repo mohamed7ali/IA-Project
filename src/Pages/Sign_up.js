@@ -29,7 +29,7 @@ export default class SignUp extends Component {
           <button className='btn ' style={{backgroundColor: "rgb(84, 132, 196)",color:"white"}}>Sign Up</button>
        </div>
        <p className='text-center mt-2 text-dark '>
-          Already Registerd<Link to="/" className='ms-2' style={{color:'rgb(78, 111, 187)'}}>Login</Link>
+          Already Registerd<Link to="/login" className='ms-2' style={{color:'rgb(78, 111, 187)'}}>Login</Link>
        </p>
           </form>
       </div>

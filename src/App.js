@@ -4,29 +4,22 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter , Routes, Route, Link } from "react-router-dom";
+import Main from "./Pages/Main";
 
 function App() {
   return (
-<BrowserRouter>
+    
+    <BrowserRouter>
 <Routes>
-  <Route path='/'element={<Login />}> </Route>
+<Route path='/'element={<Main />}> </Route>
+ <Route path='/login'element={<Login />}> </Route>
   <Route path='/signup'element={<SignUp />}> </Route>
 </Routes>
 </BrowserRouter>
-
-
-import "./App.css";
-
-
-const App = () => {
-  return (
-    <>
-    <h1>Hello</h1>
     
-    </>
 
 
-  );
-}
+
+  )}
 
 export default App;
