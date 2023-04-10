@@ -5,7 +5,7 @@ export default class Login extends Component {
   render() {
     return (
 
-        <div className=' login template  d-flex  justify-content-center align-items-center  vh-100 ' style={{backgroundColor:'rgb(84, 132, 196)'}} >
+        <div className=' login template  d-flex  justify-content-center align-items-center  vh-100 ' style={{backgroundColor:'rgb(55, 2, 104)'}} >
             <div className='  form_container p-5 rounded 'style={{border: '3px solid black',backgroundColor:'white'}}>
             <form>
                 <h3 className='text-center'>Sign In</h3>
@@ -25,10 +25,10 @@ export default class Login extends Component {
 
                     </div>
              <div className='d-grid'>
-                <button className='btn ' style={{backgroundColor: "rgb(78, 111, 187)",color:"white"}}>Sign in</button>
+                <button className='btn ' style={{backgroundColor: "rgb(55, 2, 104)",color:"white"}}>Sign in</button>
              </div>
              <p className='text-center mt-2'>
-                Forget <a href='' style={{color:'rgb(78, 111, 187)'}}>Password?</a><Link to="/signup" className='ms-2' style={{color:'rgb(78, 111, 187)'}}>Sign up</Link>
+                Forget <a href='' style={{color:'rgb(55, 2, 104)'}}>Password?</a><Link to="/signup" className='ms-2' style={{color:'rgb(55, 2, 104)'}}>Sign up</Link>
              </p>
                 </form>
             </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default class SignUp extends Component {
   render() {
     return (
-      <div className=' signup template  d-flex  justify-content-center align-items-center  vh-100 'style={{backgroundColor:'rgb(84, 132, 196)'}}>
+      <div className=' signup template  d-flex  justify-content-center align-items-center  vh-100 'style={{backgroundColor:'rgb(55, 2, 104)'}}>
       <div className='  form_container p-5 rounded text-white 'style={{border: '3px solid black',backgroundColor:'white'}}>
       <form>
           <h3 className='text-center text-dark'>Sign Up</h3>
@@ -26,10 +26,10 @@ export default class SignUp extends Component {
                   <input type='Password'placeholder='Enter Password'className='form-control'></input>
               </div>
        <div className='d-grid'>
-          <button className='btn ' style={{backgroundColor: "rgb(84, 132, 196)",color:"white"}}>Sign Up</button>
+          <button className='btn ' style={{backgroundColor: "rgb(55, 2, 104)",color:"white"}}>Sign Up</button>
        </div>
        <p className='text-center mt-2 text-dark '>
-          Already Registerd<Link to="/login" className='ms-2' style={{color:'rgb(78, 111, 187)'}}>Login</Link>
+          Already Registerd<Link to="/login" className='ms-2' style={{color:'rgb(55, 2, 104)'}}>Login</Link>
        </p>
           </form>
       </div>
