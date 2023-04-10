@@ -1,5 +1,5 @@
 body{
-    background-color: #170a52;
+    background-color:  #3c235d;;
 }
 .instructions {
     margin-top: 40px;
@@ -8,7 +8,7 @@ border-radius: 5px;
 width: 800px;
 
 background-color: white;
-height: 850px;
+height: 900px;
 padding: 40px;
 margin-bottom: 40px;
 }
@@ -34,4 +34,13 @@ margin-bottom: 40px;
 h2{
     color: #629a89;
     display: inline-block;
+}
+.exm{
+    color: #3c235d;
+    font-size: 20px;
+   
+    text-decoration: none;
+}
+.exm :hover{
+    color: #daceeb;
 }
