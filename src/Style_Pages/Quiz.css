@@ -1,0 +1,107 @@
+.quiz{
+  
+   margin-left: 200px;
+   margin-top: 40px;
+    
+}
+.question-card{
+  
+    background-color: gray;
+    padding: 16px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25)0px 30px 60px -12px,rgba(0, 0, 0, 0.3)0px 18px 36px -18px;
+    width: 80%;
+    height: auto;
+    margin-top: 30px;
+}
+ul{
+    list-style: none;
+}
+li{
+    background-color: darkgray;
+    padding: 16px;
+    border: 3px solid white;
+    border-radius: 20px;
+    margin-top:8px ;
+}
+.question-text{
+    color: rgb(55, 2, 104);
+    font-size: 28px;
+    text-align: center;
+}
+.first-h2{
+    color: white;
+    font-size: 28px;
+    text-align: center;
+}
+h1{
+   text-align: center;
+   margin-right: 220px;
+   color: rgb(55, 2, 104);
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 40px;
+}
+audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+
+
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-box-shadow: 2px 2px 4px 0px darkblue;
+-webkit-box-shadow:  2px 2px 4px 0px darkblue;
+box-shadow: 2px 2px 4px 0px darkblue;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
+.final-result{
+    margin-left: 200px;
+    background-color: gray;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25)0px 30px 60px -12px,rgba(0, 0, 0, 0.3)0px 18px 36px -18px;
+    width: 50%;
+    height: auto;
+
+}
+.sec-h1{
+    color: white;
+    font-size: 28px;
+    padding-top: 10px;
+    padding-left: 223px;
+    font-weight: bold;
+
+}
+.sec2-h2{
+    color: white;
+    font-size: 28px;
+    padding-top: 10px;
+    padding-left: 180px;
+    font-weight: bold; 
+}
+button{
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 16px 24px;
+   text-decoration: none;
+   margin-left: 300px;
+    display:inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 24px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
