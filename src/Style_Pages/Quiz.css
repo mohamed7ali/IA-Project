@@ -15,10 +15,18 @@
     height: auto;
     margin-top: 30px;
 }
-ul{
+
+.quiz h1{
+    
+   margin-right: 200;
+   color: rgb(55, 2, 104);
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 40px;
+}
+.ul1{
     list-style: none;
 }
-li{
+.li1{
     background-color: darkgray;
     padding: 16px;
     border: 3px solid white;
@@ -30,17 +38,10 @@ li{
     font-size: 28px;
     text-align: center;
 }
-.first-h2{
+.question-card h2{
     color: white;
     font-size: 28px;
     text-align: center;
-}
-h1{
-   text-align: center;
-   margin-right: 220px;
-   color: rgb(55, 2, 104);
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: 40px;
 }
 audio:hover, audio:focus, audio:active
 {
@@ -67,37 +68,37 @@ box-shadow: 2px 2px 4px 0px darkblue;
 border-radius:7px 7px 7px 7px ;
 }
 .final-result{
-    margin-left: 200px;
+    margin-left: 50px;
     background-color: gray;
     border-radius: 16px;
     color: white;
     box-shadow: rgba(50, 50, 93, 0.25)0px 30px 60px -12px,rgba(0, 0, 0, 0.3)0px 18px 36px -18px;
-    width: 50%;
+    width: 80%;
     height: auto;
 
 }
-.sec-h1{
+.final-result h1{
     color: white;
     font-size: 28px;
     padding-top: 10px;
-    padding-left: 223px;
+    padding-left: 460px;
     font-weight: bold;
 
 }
-.sec2-h2{
+.final-result h2{
     color: white;
     font-size: 28px;
     padding-top: 10px;
-    padding-left: 180px;
+    padding-left: 370px;
     font-weight: bold; 
 }
-button{
+.btn1{
     background-color: cadetblue;
     border: none;
     color: white;
     padding: 16px 24px;
    text-decoration: none;
-   margin-left: 300px;
+   margin-left: 480px;
     display:inline-block;
     font-size: 16px;
     font-weight: bold;

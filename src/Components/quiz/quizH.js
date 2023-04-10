@@ -9,6 +9,7 @@ import Header from "../Header";
 export function Quizh (){
     const [showFinalResults,setFinalResults]=useState(false);
    const [currentQuestion,setCurrentQuestion]=useState(0);
+   const [score, setScore] = useState(0);
    const questions = [
     {
       text: "What is the capital of America?",
@@ -64,7 +65,9 @@ export function Quizh (){
   ];
   const optionClicked = (isCorrect) => {
     // Increment the score
-
+    if (isCorrect) {
+      setScore(score + 1);
+    }
 
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
@@ -74,8 +77,8 @@ export function Quizh (){
   };
 
   /* Resets the game back to default */
-  const restartGame = () => {
-  
+  const restartQuiz = () => {
+    setScore(0);
     setCurrentQuestion(0);
     setFinalResults(false);
   };
@@ -85,17 +88,21 @@ export function Quizh (){
         <>
         <Header/>
              <div className="quiz ">
-        <h1>Eary Test</h1>
+        <h1 >Eary Test</h1>
+        <h2>Score: {score}</h2>
         {showFinalResults ?(
     <div className="final-result">
-        <h1 className="sec-h1">Final Result</h1>
-        <h2 className="sec2-h2"> 1 out of 10 correct - (20%) </h2>
-      <button>Restart Quiz</button>
+        <h1 >Final Result</h1>
+        <h2>
+            {score} out of {questions.length} correct - (
+            {(score / questions.length) * 100}%)
+          </h2>
+          <button className="btn1" onClick={() => restartQuiz()}>Restart Quiz</button>
     </div>
 
         ):(
     <div className="question-card ">
-        <h2 className="first-h2">Question {currentQuestion +1} out of {questions.length}</h2><br/><br/>
+        <h2 >Question {currentQuestion +1} out of {questions.length}</h2><br/><br/>
                 <ReactAudioPlayer
                     src={questions[currentQuestion].audio}
                     autoPlay
@@ -103,10 +110,10 @@ export function Quizh (){
                 />
 <br/><br/>
         <h3 className="question-text">{questions[currentQuestion].text}</h3>
-                        <ul>
+                        <ul className="ul1">
                         {questions[currentQuestion].options.map((option) => {
               return (
-                <li
+                <li className="li1"
                   key={option.id}
                   onClick={() => optionClicked(option.isCorrect)}
                 >
