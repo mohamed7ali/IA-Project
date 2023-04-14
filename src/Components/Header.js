@@ -19,6 +19,8 @@ const Header = () => {
       <Link to="../Pages/Contact_Us.js" id='link' className='link'>Contact Us</Link>
       <Link to="/login" id='link_btn1'><button> Sign in </button></Link>
       <Link to="/signup" id='link_btn2'><button> Sign up </button></Link>
+         
+                        
 
         </header>
         

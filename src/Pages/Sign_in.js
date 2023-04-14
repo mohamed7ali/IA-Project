@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../Style_Pages/Sign_in.css'
 import { Link } from "react-router-dom"
 import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 export default class Login extends Component {
   render() {
     return (
@@ -35,6 +36,8 @@ export default class Login extends Component {
                 </form>
             </div>
         </div>
+
+        <Footer />
 </>
 
     )

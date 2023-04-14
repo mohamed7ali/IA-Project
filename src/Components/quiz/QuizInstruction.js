@@ -1,12 +1,15 @@
-import React ,{Component,Fragment}from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Style_Pages/quizinstruction.css'
 import quiz from '../../Style_Pages/img/quiz.jpg'
 import Header from "../Header";
+import Team_members from "./Team_members";
+import Footer from "../Footer";
 const QuizInstructions=()=>(
     <>
     <Header/>
+
     <div className="inst" >
 <div className="instructions container">
         <h1>How to solve quiz? </h1> 
@@ -37,6 +40,12 @@ const QuizInstructions=()=>(
              </p>
     </div>
 </div>
+
+
+
+      <Team_members />
+
+     <Footer/>
 
     </>
 
