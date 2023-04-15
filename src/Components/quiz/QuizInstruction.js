@@ -35,7 +35,7 @@ const QuizInstructions=()=>(
         <h2 >Good Luck ..</h2><h2 className="p2">&#128512;</h2><br/>
 
         <p className='text-center mt-2'id="paragaph">
-        <Link to="/Exam" className='exm' >Go to Exam Page?</Link><br/>
+        <Link to="/quiz" className='exm' >Go to Exam Page?</Link><br/>
       
              </p>
     </div>
