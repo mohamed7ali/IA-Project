@@ -7,6 +7,7 @@ import { BrowserRouter , Routes, Route, Link } from "react-router-dom";
 import Main from "./Pages/Main";
 import QuizInstructions from "./Components/quiz/QuizInstruction";
 import { Quizh } from "./Components/quiz/quizH";
+import Contact_Us from './Pages/Contact_Us.js'
 
 function App() {
   return (
@@ -18,11 +19,13 @@ function App() {
   <Route path='/signup'element={<SignUp />}> </Route>
   <Route path='/QuizeInstruction'element={<QuizInstructions />}> </Route>
  <Route path='/quiz'element={<Quizh/>}> </Route>
+  <Route path='/contactUs'element={<Contact_Us/>}> </Route>
+ 
 </Routes>
 </BrowserRouter>
     
 
-
+    
 
   )}
 
