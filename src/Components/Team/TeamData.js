@@ -1,5 +1,5 @@
 import Mohamed from "../quiz/img/1668451373610.jpg"
-import Hana from "../quiz/img/Hana.jpg"
+import Hana from "../quiz/img/Hana8.jpg"
 
 
 export const Data = [
