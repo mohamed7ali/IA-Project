@@ -12,7 +12,7 @@ const Main = () => {
         <div className="text-center ">
             <h1>Welcome to Eary!</h1>
             <p className="fs-20  mb-9"> Make that ears hear here </p>
-            <Button name={"Know more"}/>
+            <Button name={"Know more"}go_to={'/QuizeInstruction'}/>
         </div>
         </div>
 
