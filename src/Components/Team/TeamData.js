@@ -1,4 +1,5 @@
 import Mohamed from "../quiz/img/1668451373610.jpg"
+import Hana from "../quiz/img/Hana.jpg"
 
 
 export const Data = [
@@ -10,7 +11,7 @@ export const Data = [
 
     {
         name: 'Hana Zein',
-        img: Mohamed,
+        img: Hana,
         team: 'Front End Team'
     },
 
