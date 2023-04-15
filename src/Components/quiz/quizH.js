@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import '../../Style_Pages/Quiz.css'
+import '../../Style_Pages/Quiz.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactAudioPlayer from 'react-audio-player';
 import Header from "../Header";

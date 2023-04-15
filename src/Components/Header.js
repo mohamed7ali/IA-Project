@@ -1,28 +1,30 @@
 import React from 'react';
 import "../Style_Components/Header.css";
-import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Button from './Button';
+import HeaderLinks from './Header_Links';
+import DropDown from './DropDown.js';
 const Header = () => {
     return (
         
     <header>
         
-          <div className='logo-container'>
+        <div className='logo-container'>
           <img src={logo} alt="Logo"></img>  
-          </div>
+        </div>
       
-      <Link to="/" id='link' className='link'>Home</Link>
-      <Link to="/quiz" id='link' className='link'>Exam</Link>
-      <Link to="/QuizeInstruction" id='link' className='link'>About Us</Link>
-      <Link to="../Pages/Contact_Us.js" id='link' className='link'>Contact Us</Link>
-      <Link to="/login" id='link_btn1'><button> Sign in </button></Link>
-      <Link to="/signup" id='link_btn2'><button> Sign up </button></Link>
-         
+        
+           <HeaderLinks go_to={'/'} name={"Home"} />
+           <HeaderLinks go_to={'/quiz'} name={" Exam    "} />
+           <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
+           <HeaderLinks go_to={'/../Pages/Contact_Us.js'} name={"Contact Us"} />
+           <Button name={'Sign in'} go_to={'/login'}/>
+           <Button name={'Sign up'} go_to={'/signup'}/>
+           <DropDown />
                         
 
-        </header>
+    </header>
         
 
         

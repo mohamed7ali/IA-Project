@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-import '../../Style_Pages/quizinstruction.css'
-import quiz from '../../Style_Pages/img/quiz.jpg'
+import "../../Style_Pages/quizinstruction.css";
+import quiz from '../../Style_Pages/img/quiz.jpg';
 import Header from "../Header";
-import Team_members from "./Team_members";
+import Team_members from "../Team/Team_members";
 import Footer from "../Footer";
 const QuizInstructions=()=>(
     <>
