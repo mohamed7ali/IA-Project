@@ -4,6 +4,7 @@ const app = express();
 const examQuestions = require("./routes/examQuestions");
 const user = require("./routes/users");
 const admin = require("./routes/admins");
+const history = require("./routes/histories");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use("", admin);
 app.use("", examQuestions);
 app.use("", user);
+app.use("", history);
 
 // Connection with server
 app.listen(4000, "localhost", () => {
