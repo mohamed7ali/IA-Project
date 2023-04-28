@@ -17,7 +17,7 @@ import Button from '../Components/Button';
       <th>Degree</th>
       <th>Email</th>
       <th>Date</th>
-      <th></th>
+    
     </tr>
   </thead>
   <tbody>
@@ -26,21 +26,21 @@ import Button from '../Components/Button';
       <td>90%</td>
       <td>Mohamed.Ali@example.com</td>
       <td>15 Apr,2023</td>
-      <td><button className='show'>show</button></td>
+     
     </tr>
     <tr>
       <td>1</td>
       <td>90%</td>
       <td>Mohamed.Ali@example.com</td>
       <td>15 Apr,2023</td>
-      <td><button className='show'>show</button></td>
+     
     </tr>
     <tr>
       <td>1</td>
       <td>90%</td>
       <td>Mohamed.Ali@example.com</td>
       <td>15 Apr,2023</td>
-      <td><button className='show'>show</button></td>
+      
     </tr>
   </tbody>
   
