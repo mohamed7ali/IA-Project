@@ -15,7 +15,7 @@ router.get("/users", (req, res) => {
 
 // Add a new user to the database
 router.post("/users", (req, res) => {
-  const { Name, Email, Password, Phone, Status } = req.body;
+  const { Name, Email, Password, Phone } = req.body;
   try {
     connection.query(
       "INSERT INTO user set ?",
@@ -24,10 +24,9 @@ router.post("/users", (req, res) => {
         Email: Email,
         Password: Password,
         Phone: Phone,
-        Status: Status,
       },
       (err, result, fields) => {
-        res.status(201).json({ message: "the user was added to the database" });
+        res.status(201).json({ message: "the user was added to the Queue" });
       }
     );
   } catch (err) {
@@ -59,11 +58,11 @@ router.get("/users/:Id", (req, res) => {
 
 // Update a user by ID
 router.put("/users/:Id", (req, res) => {
-  const { Name, Email, Password, Phone, Status } = req.body;
+  const { Name, Email, Password, Phone } = req.body;
   try {
     connection.query(
-      "UPDATE user SET Name = ?, Email = ?, Password = ?, Phone = ?, Status = ? WHERE Id = ?",
-      [Name, Email, Password, Phone, Status, req.params.Id],
+      "UPDATE user SET Name = ?, Email = ?, Password = ?, Phone = ? WHERE Id = ?",
+      [Name, Email, Password, Phone, req.params.Id],
       (error, result, fields) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -88,7 +87,7 @@ router.delete("/users/:Id", async (req, res) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
         } else {
-          res.status(202).json({ message: "User deleted" });
+          res.status(202).json({ message: "User deleted from the Queue" });
         }
       }
     );
