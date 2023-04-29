@@ -13,9 +13,8 @@ export default class Login extends Component {
             className="  form_container p-5 rounded "
             style={{ border: "3px solid black", backgroundColor: "white" }}
           >
-            <form onSubmit={this.handleSubmit}>
+            <form>
               <h3 className="text-center">Sign In</h3>
-
               <div className=" mb-2">
                 <label htmlFor="email">Email</label>
                 <input

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require("../db/connection");
 
 // Get all admins
-router.get("/admins", (req, res) => {
+router.get("/", (req, res) => {
   try {
     connection.query("SELECT * FROM admin", (error, rows, fields) => {
       res.json(rows);
@@ -14,7 +14,7 @@ router.get("/admins", (req, res) => {
 });
 
 // Add a new admin
-router.post("/admins", (req, res) => {
+router.post("/", (req, res) => {
   const { Name, Email, Password, Phone, Status } = req.body;
   try {
     connection.query(
@@ -39,7 +39,7 @@ router.post("/admins", (req, res) => {
 });
 
 // Get an admin by ID
-router.get("/admins/:Id", (req, res) => {
+router.get("/:Id", (req, res) => {
   try {
     const { Id } = req.params;
     connection.query(
@@ -60,7 +60,7 @@ router.get("/admins/:Id", (req, res) => {
 });
 
 // Update an admin by ID
-router.put("/admins/:Id", (req, res) => {
+router.put("/:Id", (req, res) => {
   const { Name, Email, Password, Phone, Status } = req.body;
   try {
     connection.query(
@@ -81,7 +81,7 @@ router.put("/admins/:Id", (req, res) => {
 });
 
 // Delete an admin by ID
-router.delete("/admins/:Id", async (req, res) => {
+router.delete("/:Id", async (req, res) => {
   try {
     connection.query(
       "DELETE FROM admin WHERE Id = ?",

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require("../db/connection");
 
 // Get all newUsers
-router.get("/newUsers", (req, res) => {
+router.get("/", (req, res) => {
   try {
     connection.query("SELECT * FROM user_queue", (error, rows, fields) => {
       res.json(rows);
@@ -14,7 +14,7 @@ router.get("/newUsers", (req, res) => {
 });
 
 // Select a user by ID and insert him into the user_queue table
-router.post("/newUsers/:Id", async (req, res) => {
+router.post("/:Id", async (req, res) => {
   const Id = req.params.Id;
   try {
     // Retrieve the user by ID from the user table
@@ -46,7 +46,7 @@ router.post("/newUsers/:Id", async (req, res) => {
 });
 
 // Get a user by ID
-router.get("/newUsers/:Id", (req, res) => {
+router.get("/:Id", (req, res) => {
   try {
     const { Id } = req.params;
     connection.query(
@@ -67,7 +67,7 @@ router.get("/newUsers/:Id", (req, res) => {
 });
 
 // Delete a user by ID
-router.delete("/newUsers/:Id", async (req, res) => {
+router.delete("/:Id", async (req, res) => {
   try {
     connection.query(
       "DELETE FROM user_queue WHERE Id = ?",

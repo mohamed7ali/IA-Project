@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require("../db/connection");
 
 // Get all users
-router.get("/users", (req, res) => {
+router.get("/", (req, res) => {
   try {
     connection.query("SELECT * FROM user", (error, rows, fields) => {
       res.json(rows);
@@ -14,7 +14,7 @@ router.get("/users", (req, res) => {
 });
 
 // Add a new user
-router.post("/users", (req, res) => {
+router.post("/", (req, res) => {
   const { Name, Email, Password, Phone } = req.body;
   try {
     connection.query(
@@ -36,7 +36,7 @@ router.post("/users", (req, res) => {
 });
 
 // Get a user by ID
-router.get("/users/:Id", (req, res) => {
+router.get("/:Id", (req, res) => {
   try {
     const { Id } = req.params;
     connection.query(
@@ -57,7 +57,7 @@ router.get("/users/:Id", (req, res) => {
 });
 
 // Update a user by ID
-router.put("/users/:Id", (req, res) => {
+router.put("/:Id", (req, res) => {
   const { Name, Email, Password, Phone } = req.body;
   try {
     connection.query(
@@ -78,7 +78,7 @@ router.put("/users/:Id", (req, res) => {
 });
 
 // Delete a user by ID
-router.delete("/users/:Id", async (req, res) => {
+router.delete("/:Id", async (req, res) => {
   try {
     connection.query(
       "DELETE FROM user WHERE Id = ?",

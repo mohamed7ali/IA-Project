@@ -25,12 +25,12 @@ const contactUs = require("./routes/contactUs");
 const checkUserStatus = require("./middleware/checkStatus");
 const checkContactMessage = require("./middleware/checkContactMessage");
 // ==================API ROUTES [ENDPOINTS]=================
-app.use("", admin);
+app.use("/admins", admin);
 app.use("/quizzes", checkUserStatus, examQuestions);
-app.use("", user);
-app.use("", userQueue);
-app.use("", history);
-app.use("", authentication);
+app.use("/users", user);
+app.use("/newUsers", userQueue);
+app.use("/histories", history);
+app.use("/auth", authentication);
 app.use("/contactUs", checkContactMessage, contactUs);
 
 // ====================== RUN THE APP =======================

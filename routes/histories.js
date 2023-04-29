@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require("../db/connection");
 
 // Get all histories
-router.get("/histories", (req, res) => {
+router.get("/", (req, res) => {
   try {
     connection.query("SELECT * FROM history", (error, rows, fields) => {
       res.json(rows);
@@ -14,7 +14,7 @@ router.get("/histories", (req, res) => {
 });
 
 // Get history result by ID
-router.get("/histories/:Id", (req, res) => {
+router.get("/:Id", (req, res) => {
   const id = req.params.Id;
   try {
     connection.query(
@@ -35,7 +35,7 @@ router.get("/histories/:Id", (req, res) => {
 });
 
 // Create a new history result
-router.post("/histories", async (req, res) => {
+router.post("/", async (req, res) => {
   const { Exam_id, Email, Degree } = req.body;
   try {
     connection.query(
@@ -58,7 +58,7 @@ router.post("/histories", async (req, res) => {
 });
 
 // Update an history result by ID
-router.put("/histories/:Id", (req, res) => {
+router.put("/:Id", (req, res) => {
   const id = req.params.Id;
   const { Exam_id, Email, Degree } = req.body;
   try {
@@ -80,7 +80,7 @@ router.put("/histories/:Id", (req, res) => {
 });
 
 // Delete an history result by ID
-router.delete("/histories/:Id", (req, res) => {
+router.delete("/:Id", (req, res) => {
   const Id = req.params.Id;
   try {
     connection.query(
