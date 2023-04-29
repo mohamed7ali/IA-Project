@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const connection = require("../db/connection");
 
-// Get all users from the database
+// Get all users
 router.get("/users", (req, res) => {
   try {
     connection.query("SELECT * FROM user", (error, rows, fields) => {
@@ -13,7 +13,7 @@ router.get("/users", (req, res) => {
   }
 });
 
-// Add a new user to the database
+// Add a new user
 router.post("/users", (req, res) => {
   const { Name, Email, Password, Phone } = req.body;
   try {
@@ -77,7 +77,7 @@ router.put("/users/:Id", (req, res) => {
   }
 });
 
-// Delete a user by ID from the database
+// Delete a user by ID
 router.delete("/users/:Id", async (req, res) => {
   try {
     connection.query(
@@ -96,5 +96,4 @@ router.delete("/users/:Id", async (req, res) => {
     res.sendStatus(500);
   }
 });
-
 module.exports = router;

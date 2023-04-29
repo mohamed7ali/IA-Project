@@ -93,16 +93,11 @@ router.post("/login", async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ message: "Your Password Incorrect!" });
     }
-    // res.json(user);
-    // Generate JWT token and send it in response
-    // Define secret key
-    const JWT_SECRET = process.env.JWT_SECRET || "secretkey";
 
-    // Generate JWT token
-    const token = jwt.sign({ Id: user.Id }, JWT_SECRET, { expiresIn: "1h" });
-
+    // Get token
+    const token = user.verification_token;
     // Send token in response
-    res.json({ token });
+    res.json({ msg: "login successfully", token: token });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });

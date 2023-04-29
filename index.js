@@ -1,4 +1,4 @@
-// ==================INITIALIZE EXPRESS APP=====================
+// ================INITIALIZE EXPRESS APP==================
 const express = require("express");
 const app = express();
 
@@ -11,25 +11,29 @@ app.use(bodyParser.json());
 // Allow http request local hosts
 const cors = require("cors");
 app.use(cors());
-
 app.use(express.static("upload"));
-// ==================REQUIRED MODULE=====================
+
+// ==================REQUIRED MODULE=======================
 const examQuestions = require("./routes/examQuestions");
 const user = require("./routes/users");
 const admin = require("./routes/admins");
 const history = require("./routes/histories");
 const userQueue = require("./routes/usersQueue");
 const authentication = require("./routes/authentication");
-
-// ==================API ROUTES [ENDPOINTS]=====================
+const contactUs = require("./routes/contactUs");
+// ================== LOCAL MIDDLEWARE =====================
+const checkUserStatus = require("./middleware/checkStatus");
+const checkContactMessage = require("./middleware/checkContactMessage");
+// ==================API ROUTES [ENDPOINTS]=================
 app.use("", admin);
-app.use("", examQuestions);
+app.use("/quizzes", checkUserStatus, examQuestions);
 app.use("", user);
 app.use("", userQueue);
 app.use("", history);
 app.use("", authentication);
-// ==================RUN THE APP=====================
-// Connection with server
+app.use("/contactUs", checkContactMessage, contactUs);
+
+// ====================== RUN THE APP =======================
 app.listen(4000, "localhost", () => {
   console.log("listening on http://localhost:4000");
 });

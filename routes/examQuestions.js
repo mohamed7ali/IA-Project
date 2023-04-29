@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require("../db/connection");
 
 // get all quizzes from the database
-router.get("/quizzes", (req, res) => {
+router.get("/", (req, res) => {
   try {
     connection.query("SELECT * FROM exam_question", (error, rows, fields) => {
       if (rows) {
@@ -18,7 +18,7 @@ router.get("/quizzes", (req, res) => {
 });
 
 // Retrieve a single quiz by ID
-router.get("/quizzes/:Id", (req, res) => {
+router.get("/:Id", (req, res) => {
   try {
     const Id = req.params.Id;
     connection.query(
@@ -39,7 +39,7 @@ router.get("/quizzes/:Id", (req, res) => {
 });
 
 // Insert a new question
-router.post("/quizzes", (req, res) => {
+router.post("/", (req, res) => {
   const { Audio, Question, Ans_1, Ans_2, Ans_3, Ans_4 } = req.body;
   try {
     connection.query(
@@ -65,7 +65,7 @@ router.post("/quizzes", (req, res) => {
 });
 
 // Update a question by ID
-router.put("/quizzes/:Id", (req, res) => {
+router.put("/:Id", (req, res) => {
   const { Audio, Question, Ans_1, Ans_2, Ans_3, Ans_4 } = req.body;
   try {
     connection.query(
@@ -86,11 +86,11 @@ router.put("/quizzes/:Id", (req, res) => {
 });
 
 // Delete a question by ID
-router.delete("/quizzes/:id", (req, res) => {
+router.delete("/:Id", (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params.Id;
     connection.query(
-      "DELETE FROM exam_question WHERE id = ?",
+      "DELETE FROM exam_question WHERE Id = ?",
       [id],
       (err, result, fields) => {
         if (result.affectedRows === 0) {

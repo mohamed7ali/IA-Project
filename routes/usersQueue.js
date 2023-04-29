@@ -13,7 +13,7 @@ router.get("/newUsers", (req, res) => {
   }
 });
 
-// Select a user by ID and insert them into the user_queue table
+// Select a user by ID and insert him into the user_queue table
 router.post("/newUsers/:Id", async (req, res) => {
   const Id = req.params.Id;
   try {
