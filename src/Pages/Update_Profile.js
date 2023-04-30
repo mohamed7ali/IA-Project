@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../Style_Pages/Update_File.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import React, { Component }  from 'react';
+import React  from 'react';
 const UpdateProfilePage = () => {
   // Use state to store user data
   const [user, setUser] = useState({
