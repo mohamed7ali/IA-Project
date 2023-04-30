@@ -11,6 +11,7 @@ import Contact_Us from "./Pages/Contact_Us";
 import New_Users_Queue from "./Pages/New_Users_Queue";
 import { History } from "./Pages/history";
 import { Add_Question } from "./Pages/Add_Question";
+import React, { Component }  from 'react';
 
 function App() {
   return (
