@@ -5,7 +5,7 @@ import { getAuthUser } from "../helper/storage";
 
 const Guest = () => {
   const auth = getAuthUser();
-  return <>{!auth ? <Outlet /> : <Navigate to={"/"} />}</>;
+  return <>{!auth ? <Outlet /> : <Navigate to={"/home"} />}</>;
 };
 
 export default Guest;

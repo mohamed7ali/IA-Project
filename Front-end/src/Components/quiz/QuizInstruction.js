@@ -11,7 +11,7 @@ const QuizInstructions=()=>(
     <Header/>
 
     <div className="inst" >
-<div className="instructions container">
+<div className="instructions container" >
         <h1>How to solve quiz? </h1> 
         <p className="p1">Ensure you read this guide from start to finsh.</p>
         <ul className="browser-default"id="main-list">
@@ -32,7 +32,7 @@ const QuizInstructions=()=>(
                 After finshing quiz you can solve it again if you want.
             </li>
         </ul>
-        <h2 >Good Luck ..</h2><h2 className="p2">&#128512;</h2><br/>
+        <h2  >Good Luck ..</h2><h2 className="p2">&#128512;</h2><br/>
 
         <p className='text-center mt-2'id="paragaph">
         <Link to="/quiz" className='exm' >Go to Exam Page?</Link><br/>

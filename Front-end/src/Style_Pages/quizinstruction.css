@@ -21,11 +21,12 @@ body {
 margin-top: 40px;
 border: 1px solid darkslategrey;
 border-radius: 5px;
-width: 800px;
+
+align-items: center;
 
 background-color: white;
 height: 990px;
-padding: 40px;
+padding: 20px;
 margin-bottom: 40px;
 }
 .instructions h1{
@@ -33,6 +34,7 @@ margin-bottom: 40px;
     color: #e8efed;
     font-family: "Times New Roman", Times, serif;
     padding-bottom: 10px;
+    
 }
 .p1{
     color: #ece6f5;
@@ -45,15 +47,18 @@ margin-bottom: 40px;
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 10px;
     font-size: 20px;
+    margin-left: 300px;
 }
 
-.instructions h1{
+.instructions h2{
     color: #d9e9e4;
     display: inline-block;
+    
 }
 .exm{
     color: #e0dce5;
     font-size: 20px;
+    
    
     text-decoration: none;
 }
