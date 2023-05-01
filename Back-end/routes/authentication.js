@@ -103,7 +103,7 @@ router.post("/login", async (req, res) => {
     // Get token
     const token = user.verification_token;
     // Send token in response
-    res.json({ msg: "login successfully", token: token });
+    res.json({ msg: "login successfully", token: token,status:user.Status });
   } catch (err) {
     console.log(err);
     res.status(500).json({errors: [ { msg: "Server error" },],});
