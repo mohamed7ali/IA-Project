@@ -9,7 +9,11 @@ const Contact_Us = () => {
         <Header />
 
         <h1>Contact Us</h1>
+<<<<<<< HEAD
     <div className="container">
+=======
+    <div class="container">
+>>>>>>> main
       <h2>Get in touch</h2>
       <form action="" method="post">
         <label for="name">Name</label>
