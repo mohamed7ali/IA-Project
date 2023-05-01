@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const connection = require("../db/connection");
-
+const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 // Get all admins
 router.get("/", (req, res) => {
   try {
