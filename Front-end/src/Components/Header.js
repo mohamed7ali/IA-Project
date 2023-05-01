@@ -25,15 +25,18 @@ const Header = () => {
       
         
            <HeaderLinks go_to={'/home'} name={"Home"} />
-           <HeaderLinks go_to={'/quiz'} name={" Exam    "} />
-           <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
+           
+ <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
            <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
+          { auth&&
+           <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
 
              {/* unAuthenticated Route  */}
              {!auth && (
               <>
            <Button name={'Sign in'} go_to={'/'}/>
            <Button name={'Sign up'} go_to={'/signup'}/>
+           
               </>
             )}
 
