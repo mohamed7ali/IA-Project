@@ -15,13 +15,12 @@ router.get("/", (req, res) => {
 });
 
 // Add a new admin
-router.post("/", async(req, res) => {
-        // Hash the Password
-      
+router.post("/", async (req, res) => {
   const { Name, Email, Password, Phone, Status } = req.body;
+  // Hash the Password
   const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(Password, saltRounds);
-        const verificationToken = crypto.randomBytes(20).toString("hex");
+  const hashedPassword = await bcrypt.hash(Password, saltRounds);
+  const verificationToken = crypto.randomBytes(20).toString("hex");
   try {
     connection.query(
       "INSERT INTO user set ?",
@@ -31,21 +30,16 @@ router.post("/", async(req, res) => {
         Password: hashedPassword,
         Phone: Phone,
         Status: Status,
-        verification_token:verificationToken,
+        verification_token: verificationToken,
       },
-      
 
       (err, result, fields) => {
-        res
-          .status(201)
-          .json({ message: "the admin was added to the database" ,token:verificationToken});
+        res.status(201).json({
+          message: "the admin was added to the database",
+          token: verificationToken,
+        });
       }
     );
-
-   
-    
-
-
   } catch (err) {
     console.error(err);
     res.sendStatus(500);

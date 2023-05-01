@@ -32,9 +32,13 @@ router.post(
           Phone,
         ]);
       if (userExists.length > 0) {
-        return res.status(400).json({errors: [ { 
-          msg: "User already exists with the given Email or Phone number",
-      },],});
+        return res.status(400).json({
+          errors: [
+            {
+              msg: "User already exists with the given Email or Phone number",
+            },
+          ],
+        });
       }
 
       // Hash the Password
@@ -55,11 +59,10 @@ router.post(
 
       // Send Email with verification link
 
-      
-      res.status(200).json({message: "User registered successfully"});
+      res.status(200).json({ message: "User registered successfully" });
     } catch (error) {
       console.error(error);
-      res.status(500).json({errors: [ { msg: "Internal server error"},], });
+      res.status(500).json({ errors: [{ msg: "Internal server error" }] });
     }
   }
 );
@@ -70,7 +73,9 @@ router.post("/login", async (req, res) => {
 
   // Check if Email and password are provided
   if (!Email || !Password) {
-    return res.status(400).json({ errors: [ { msg: "Email and password are required" },],});
+    return res
+      .status(400)
+      .json({ errors: [{ msg: "Email and password are required" }] });
   }
   try {
     // Check if user exists in the database
@@ -81,7 +86,7 @@ router.post("/login", async (req, res) => {
     if (!rows.length) {
       return res
         .status(401)
-        .json({errors: [ { msg: "Your Email does not exist in database." },],});
+        .json({ errors: [{ msg: "Your Email does not exist in database." }] });
     }
 
     const user = rows[0];
@@ -92,21 +97,22 @@ router.post("/login", async (req, res) => {
       user.Password
     );
     if (!passwordMatch) {
-      return res.status(401).json({          errors: [
-        {
-          msg: " Your Password Incorrect!",
-        },
-      ],});
+      return res.status(401).json({
+        errors: [
+          {
+            msg: " Your Password Incorrect!",
+          },
+        ],
+      });
     }
-
 
     // Get token
     const token = user.verification_token;
     // Send token in response
-    res.json({ msg: "login successfully", token: token,status:user.Status });
+    res.json({ msg: "login successfully", token: token, status: user.Status });
   } catch (err) {
     console.log(err);
-    res.status(500).json({errors: [ { msg: "Server error" },],});
+    res.status(500).json({ errors: [{ msg: "Server error" }] });
   }
 });
 
