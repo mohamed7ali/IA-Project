@@ -12,11 +12,17 @@ import New_Users_Queue from "./Pages/New_Users_Queue";
 import { History } from "./Pages/history";
 import { Add_Question } from "./Pages/Add_Question";
 import React, { Component }  from 'react';
+import Guest from "./middleware/Guest";
+
 
 function App() {
   return (
+    
     <BrowserRouter>
+
+
       <Routes>
+       
         <Route path="/" element={<Login />}>
           {" "}
         </Route>
@@ -46,6 +52,7 @@ function App() {
         </Route>
         <Route path="/add" element={<Add_Question />}>
           {" "}
+
         </Route>
       </Routes>
     </BrowserRouter>

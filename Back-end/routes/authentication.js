@@ -54,7 +54,7 @@ router.post(
         );
 
       // Send Email with verification link
-
+      
       res.status(200).json({ message: "User registered successfully" });
     } catch (error) {
       console.error(error);

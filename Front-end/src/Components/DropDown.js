@@ -4,6 +4,8 @@ import img from "../Components/menu2.png"
 import DropDownLinks from './DropDownLinks.js';
 import { useNavigate } from "react-router-dom";
 import { getAuthUser, removeAuthUser } from '../helper/storage';
+import { Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 const DropDown = () => {
   const navigate = useNavigate();
   const auth = getAuthUser();
@@ -15,22 +17,41 @@ const DropDown = () => {
     
     
     return (
+      auth && (
         <>
-    <div className="dropdown">
-      <button style={{backgroundColor:'transparent', border:'none'}} className="dropdownToggle" onClick={toggleDropdown} ><img style={{ width: '35px', height: '35px' }} src={img} /></button>
-      <ul className="dropdown-menu">
-       <li><DropDownLinks className="a" go_to={"/newUser"} name={"Users in queue"} /></li>
-       <li><DropDownLinks className="a" go_to={"/add"} name={"Add questions"} /></li>
-       <li><DropDownLinks className="a" go_to={"/updatePage"} name={"Update profile"} /></li>
-       <li><DropDownLinks className="a" go_to={"/history"} name={"Exams history"} /></li>
-       <li><DropDownLinks className="a"  name={"Log out"} onClick={Logout}/></li>
-     </ul>
-     
-    </div>
+        <div className="dropdown">
+          <button style={{backgroundColor:'transparent', border:'none'}} className="dropdownToggle" onClick={toggleDropdown} ><img style={{ width: '35px', height: '35px' }} src={img} /></button>
+          <ul className="dropdown-menu">
 
-
-
-</>
+    
+           <li><DropDownLinks className="a" go_to={"/updatePage"} name={"Update profile"} /></li>
+           <li><DropDownLinks className="a" go_to={"/history"} name={"Exams history"} /></li>
+           {auth && auth.Status === 1 && (
+                  <>
+                    <Link className="nav-link" to={"/newUser"}>
+                      Requests
+                    </Link>
+                    <Link className="nav-link" to={"/add"}>
+                    Add questions
+                    </Link>
+    
+                  </>
+                )}
+              
+       
+           <Nav style={{color:'black'}}>
+                {/* Authenticated Routes  */}
+                {auth && <Nav.Link onClick={Logout}>Logout</Nav.Link>}
+              </Nav>
+         </ul>
+         
+        </div>
+    
+    
+    
+    </>
+      )
+       
     );
 
     function toggleDropdown() {

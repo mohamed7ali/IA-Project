@@ -7,6 +7,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { setAuthUser } from "../helper/storage";
+import Header from "../Components/Header";
 
 
  const Login = () => {
@@ -41,7 +42,9 @@ import { setAuthUser } from "../helper/storage";
       });
   };
     return (
+      
       <div>
+        <Header />
        <h1 style={{color:"white"}}>Eary System</h1>
         <div className=" login template  d-flex  justify-content-center align-items-center  vh-100 ">
 
