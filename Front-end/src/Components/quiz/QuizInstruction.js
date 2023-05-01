@@ -9,7 +9,6 @@ import Footer from "../Footer";
 const QuizInstructions = () => (
   <>
     <Header />
-
     <div className="inst">
       <div className="instructions container">
         <h1>How to solve quiz? </h1>

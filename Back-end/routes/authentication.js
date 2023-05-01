@@ -27,10 +27,11 @@ router.post(
       // Check if user already exists with the given Email or Phone number
       const userExists = await util
         .promisify(connection.query)
-        .call(connection, "SELECT Id FROM user WHERE Email = ? OR Phone = ?", [
-          Email,
-          Phone,
-        ]);
+        .call(
+          connection,
+          "SELECT Id FROM user_queue WHERE Email = ? OR Phone = ?",
+          [Email, Phone]
+        );
       if (userExists.length > 0) {
         return res.status(400).json({
           errors: [
@@ -53,7 +54,7 @@ router.post(
         .promisify(connection.query)
         .call(
           connection,
-          "INSERT INTO user (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
+          "INSERT INTO user_queue (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
           [Name, Email, Phone, hashedPassword, verificationToken]
         );
 
@@ -61,10 +62,7 @@ router.post(
 
       res
         .status(200)
-        .json({
-          message: "User registered successfully",
-          token: verificationToken,
-        });
+        .json({ message: "User Add IN queue please Wait Admin To Confirm" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ errors: [{ msg: "Internal server error" }] });
