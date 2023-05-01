@@ -6,6 +6,7 @@
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
+    margin-top: 20px;
   }
   
   .form-title {
@@ -13,6 +14,7 @@
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
+    color: black;
   }
   
   .form-input {
@@ -31,6 +33,7 @@
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: black;
   }
   
   .form-button {

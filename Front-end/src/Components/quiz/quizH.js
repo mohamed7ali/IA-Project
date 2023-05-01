@@ -89,7 +89,7 @@ export function Quizh (){
         <Header/>
              <div className="quiz ">
         <h1 >Eary Test</h1>
-        <h2>Score: {score}</h2>
+        <h2 className="score">Score: {score}</h2>
         {showFinalResults ?(
     <div className="final-result">
         <h1 >Final Result</h1>

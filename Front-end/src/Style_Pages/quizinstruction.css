@@ -24,35 +24,35 @@ border-radius: 5px;
 width: 800px;
 
 background-color: white;
-height: 940px;
+height: 990px;
 padding: 40px;
 margin-bottom: 40px;
 }
 .instructions h1{
     text-align: center;
-    color: #629a89;
+    color: #e8efed;
     font-family: "Times New Roman", Times, serif;
     padding-bottom: 10px;
 }
 .p1{
-    color: #3c235d;
+    color: #ece6f5;
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 10px;
     font-size: 20px;
 }
 .browser-default{
-    color: #3c235d;
+    color: #faf6ff;
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 10px;
     font-size: 20px;
 }
 
 .instructions h1{
-    color: #629a89;
+    color: #d9e9e4;
     display: inline-block;
 }
 .exm{
-    color: #3c235d;
+    color: #e0dce5;
     font-size: 20px;
    
     text-decoration: none;
