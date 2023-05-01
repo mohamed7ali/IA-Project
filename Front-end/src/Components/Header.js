@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from './Button';
 import HeaderLinks from './Header_Links';
 import DropDown from './DropDown.js';
+<<<<<<< HEAD
 
 import { useNavigate } from "react-router-dom";
 import { getAuthUser, removeAuthUser } from '../helper/storage';
@@ -15,6 +16,9 @@ const Header = () => {
     removeAuthUser();
     navigate("/");
   };
+=======
+const Header = () => {
+>>>>>>> main
     return (
         
     <header>
@@ -28,8 +32,12 @@ const Header = () => {
            
  <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
            <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
+<<<<<<< HEAD
           { auth&&
            <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
+=======
+<<<<<<< HEAD
+>>>>>>> 0f599ce2d076d50d6b9a3f2f7873a4dcf8403953
 
              {/* unAuthenticated Route  */}
              {!auth && (
@@ -42,6 +50,10 @@ const Header = () => {
 
             {/* Admin Routes  */}
 
+=======
+           <Button name={'Sign in'} go_to={'/login'}/>
+           <Button name={'Sign up'} go_to={'/signup'}/>
+>>>>>>> main
            <DropDown />
                         
 

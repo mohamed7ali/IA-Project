@@ -56,7 +56,11 @@ router.post(
       // Send Email with verification link
 
       
+<<<<<<< HEAD
       res.status(200).json({message: "User Add IN queue please Wait Admin To Confirm"});
+=======
+      res.status(200).json({message: "User registered successfully"});
+>>>>>>> 0f599ce2d076d50d6b9a3f2f7873a4dcf8403953
     } catch (error) {
       console.error(error);
       res.status(500).json({errors: [ { msg: "Internal server error"},], });

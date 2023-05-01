@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React, { Component } from "react";
+>>>>>>> main
 import "../Style_Pages/Sign_in.css";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+<<<<<<< HEAD
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -47,6 +52,12 @@ const SignUp = () =>  {
  
     return (
       <div>
+=======
+export default class SignUp extends Component {
+  render() {
+    return (
+      <>
+>>>>>>> main
         <Header />
         <h1 style={{color:"white"}}>Eary System</h1>
         <div className=" signup template  d-flex  justify-content-center align-items-center  vh-100 ">
@@ -54,6 +65,7 @@ const SignUp = () =>  {
             className="  form_container p-5 rounded text-white "
             style={{ border: "3px solid black", backgroundColor: "white" }}
           >
+<<<<<<< HEAD
             <form onSubmit={RegisterFun}>
               <h3 className="text-center text-dark">Sign Up</h3>
 
@@ -64,10 +76,40 @@ const SignUp = () =>  {
                   placeholder="Enter First Name"
                   value={register.name}
                   onChange={(e) => setRegister({ ...register, name: e.target.value })}
+=======
+            <form>
+              <h3 className="text-center text-dark">Sign Up</h3>
+
+              <div className=" mb-2">
+                <label htmlFor="fname">First Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter First Name"
+>>>>>>> main
                   className="form-control"
                 ></input>
               </div>
 
+<<<<<<< HEAD
+=======
+              <div className=" mb-2">
+                <label htmlFor="lname">Last Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter Last Name"
+                  className="form-control"
+                ></input>
+              </div>
+
+              <div className=" mb-2">
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="text"
+                  placeholder="Enter Phone Number"
+                  className="form-control"
+                ></input>
+              </div>
+>>>>>>> main
 
               <div className=" mb-2">
                 <label htmlFor="email">Email</label>
@@ -75,9 +117,12 @@ const SignUp = () =>  {
                   type="email"
                   placeholder="Enter Email"
                   className="form-control"
+<<<<<<< HEAD
                   value={register.email}
                   onChange={(e) =>
                     setRegister({ ...register, email: e.target.value })}
+=======
+>>>>>>> main
                 ></input>
               </div>
 
@@ -87,6 +132,7 @@ const SignUp = () =>  {
                   type="Password"
                   placeholder="Enter Password"
                   className="form-control"
+<<<<<<< HEAD
                   value={register.password}
                   onChange={(e) =>
                     setRegister({ ...register, password: e.target.value })
@@ -102,13 +148,18 @@ const SignUp = () =>  {
                 value={register.phone}
                 onChange={(e) =>
                   setRegister({ ...register, phone: e.target.value })}
+=======
+>>>>>>> main
                 ></input>
               </div>
 
               <div className="d-grid">
                 <button
+<<<<<<< HEAD
                           type="submit"
                           disabled={register.loading === true}
+=======
+>>>>>>> main
                   className="btn "
                   style={{ backgroundColor: "rgb(55, 2, 104)", color: "white" }}
                 >
@@ -116,27 +167,50 @@ const SignUp = () =>  {
                 </button>
               </div>
 
+<<<<<<< HEAD
               {register.err.map((error, index) => (
         <Alert key={index}   style={{color:"white",width:350,backgroundColor:"#690650",height:80,borderRadius:10}}>
         {error.msg}
       </Alert>
       ))}
+<<<<<<< HEAD
 
   <Link
                    to="/"
+=======
+                <Link
+                  to="/"
+=======
+              <p className="text-center mt-2 text-dark ">
+                Already Registerd
+                <Link
+                  to="/login"
+>>>>>>> main
+>>>>>>> 0f599ce2d076d50d6b9a3f2f7873a4dcf8403953
                   className="ms-2"
                   style={{ color: "rgb(55, 2, 104)" }}
                 >
                   Login
                 </Link>
+<<<<<<< HEAD
               
+=======
+              </p>
+>>>>>>> main
             </form>
           </div>
         </div>
 
         <Footer />
+<<<<<<< HEAD
       </div>
     );
   
 }
 export default SignUp;
+=======
+      </>
+    );
+  }
+}
+>>>>>>> main
