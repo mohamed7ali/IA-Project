@@ -12,15 +12,31 @@ import New_Users_Queue from "./Pages/New_Users_Queue";
 import { History } from "./Pages/history";
 import { Add_Question } from "./Pages/Add_Question";
 import React, { Component }  from 'react';
+<<<<<<< HEAD
+=======
+import Guest from "./middleware/Guest";
+
+>>>>>>> 37ae715fbb4389d3dc064cfba13e559d5c674dfa
 
 function App() {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
       <Routes>
         <Route path="/" element={<Main />}>
           {" "}
         </Route>
         <Route path="/login" element={<Login />}>
+=======
+
+
+      <Routes>
+       
+        <Route path="/" element={<Login />}>
+          {" "}
+        </Route>
+        <Route path="/home" element={<Main />}>
+>>>>>>> 37ae715fbb4389d3dc064cfba13e559d5c674dfa
           {" "}
         </Route>
         <Route path="/signup" element={<SignUp />}>
@@ -46,6 +62,10 @@ function App() {
         </Route>
         <Route path="/add" element={<Add_Question />}>
           {" "}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37ae715fbb4389d3dc064cfba13e559d5c674dfa
         </Route>
       </Routes>
     </BrowserRouter>
