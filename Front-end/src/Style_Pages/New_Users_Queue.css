@@ -35,6 +35,14 @@ table {
     color: white;
     font-weight: bold;
   }
+  .show{
+    background-color: #b1a0a0;
+    color: black;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 90px;
+   
+  }
 
   @media (max-width: 767px) {
     /* Responsive styles for smaller screens */

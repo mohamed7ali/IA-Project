@@ -8,10 +8,11 @@ Button{
     color: white;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 15px;
+   
     padding: 7px;
     height: 40px;
     font-weight: bold;
+    border-radius: 4px;
     color: white;
     
     text-decoration: none;
@@ -22,10 +23,12 @@ Button{
   Button:hover{
     transition: all 0.4s ease-in-out;
     background-color: white;
-    border: 3px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
     font-weight: bolder;
     color:var(--violete) ;
     border-radius: 20px;
+    color: black;
+    font-weight: 400;
   }
 
   .LinkBtn{
