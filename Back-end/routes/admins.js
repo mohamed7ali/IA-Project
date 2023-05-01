@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const connection = require("../db/connection");
-
+const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 // Get all admins
 router.get("/", (req, res) => {
   try {
@@ -14,24 +15,37 @@ router.get("/", (req, res) => {
 });
 
 // Add a new admin
-router.post("/", (req, res) => {
+router.post("/", async(req, res) => {
+        // Hash the Password
+      
   const { Name, Email, Password, Phone, Status } = req.body;
+  const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(Password, saltRounds);
+        const verificationToken = crypto.randomBytes(20).toString("hex");
   try {
     connection.query(
-      "INSERT INTO admin set ?",
+      "INSERT INTO user set ?",
       {
         Name: Name,
         Email: Email,
-        Password: Password,
+        Password: hashedPassword,
         Phone: Phone,
         Status: Status,
+        verification_token:verificationToken,
       },
+      
+
       (err, result, fields) => {
         res
           .status(201)
-          .json({ message: "the admin was added to the database" });
+          .json({ message: "the admin was added to the database" ,token:verificationToken});
       }
     );
+
+   
+    
+
+
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
