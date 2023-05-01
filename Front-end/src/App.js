@@ -17,10 +17,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}>
+        <Route path="/" element={<Login />}>
           {" "}
         </Route>
-        <Route path="/login" element={<Login />}>
+        <Route path="/home" element={<Main />}>
           {" "}
         </Route>
         <Route path="/signup" element={<SignUp />}>

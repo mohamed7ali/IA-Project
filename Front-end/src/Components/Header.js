@@ -19,8 +19,7 @@ const Header = () => {
            <HeaderLinks go_to={'/quiz'} name={" Exam    "} />
            <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
            <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
-           <Button name={'Sign in'} go_to={'/login'}/>
-           <Button name={'Sign up'} go_to={'/signup'}/>
+
            <DropDown />
                         
 

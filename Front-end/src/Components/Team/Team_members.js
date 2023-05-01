@@ -12,13 +12,13 @@ const Team_members = () => {
 
     return (
 
-        <div class="team text-center pb-5 pt-5">
-        <div class="container pb-5 pt-5">
+        <div className="team text-center pb-5 pt-5">
+        <div className="container pb-5 pt-5">
 
           <h1 style={{color:'white'}} >TEAM MEMBERS</h1>
-          <p style={{color:'yellow'}} class="fs-10 mb-50  fw-bold">Introduced to you by:</p>
+          <p style={{color:'yellow'}} className="fs-10 mb-50  fw-bold">Introduced to you by:</p>
         
-            <div class="row justify-content-center">
+            <div className="row justify-content-center">
                      
               {display_Team_Cards()}
                   
