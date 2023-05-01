@@ -26,16 +26,11 @@ const DropDown = () => {
     
            <li><DropDownLinks className="a" go_to={"/updatePage"} name={"Update profile"} /></li>
            <li><DropDownLinks className="a" go_to={"/history"} name={"Exams history"} /></li>
-           {auth && auth.Status === 1 && (
+           {auth.status=== 1 && (
                   <>
-                    <Link className="nav-link" to={"/newUser"}>
-                      Requests
-                    </Link>
-                    <Link className="nav-link" to={"/add"}>
-                    Add questions
-                    </Link>
-    
-                  </>
+                   <li><DropDownLinks className="a" go_to={"/newUser"} name={"Requests"} /></li>
+                   <li><DropDownLinks className="a" go_to={"/add"} name={"Add questions"} /></li>
+          </>
                 )}
               
        

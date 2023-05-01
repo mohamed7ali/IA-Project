@@ -24,7 +24,7 @@ const Header = () => {
         </div>
       
         
-           <HeaderLinks go_to={'/'} name={"Home"} />
+           <HeaderLinks go_to={'/home'} name={"Home"} />
            <HeaderLinks go_to={'/quiz'} name={" Exam    "} />
            <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
            <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
