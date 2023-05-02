@@ -16,8 +16,9 @@ router.get("/", (req, res) => {
 
 // Add a new admin
 router.post("/", async (req, res) => {
-  const { Name, Email, Password, Phone, Status } = req.body;
   // Hash the Password
+
+  const { Name, Email, Password, Phone, Status } = req.body;
   const saltRounds = 10;
   const hashedPassword = await bcrypt.hash(Password, saltRounds);
   const verificationToken = crypto.randomBytes(20).toString("hex");

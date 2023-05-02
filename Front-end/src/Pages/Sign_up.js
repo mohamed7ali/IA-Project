@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { setAuthUser } from "../helper/storage";
 const SignUp = () =>  {
   const navigate = useNavigate();
+  const text="";
   const [register, setRegister] = useState({
     email: "",
     password: "",
@@ -16,6 +17,9 @@ const SignUp = () =>  {
     phone:"",
     loading: false,
     err: [],
+    text:"",
+   
+    
   });
   const RegisterFun = (e) => {
     e.preventDefault();
@@ -28,11 +32,10 @@ const SignUp = () =>  {
         Phone:register.phone
       })
       .then((resp) => {
-        setRegister({ ...register, loading: false, err: [] });
-        setAuthUser(resp.data);
-        navigate("/home")
-       
-      })
+        setRegister({ ...register, loading: false, err: [] ,text:""});
+        alert(resp.data.message);
+        
+        })
       .catch((errors) => {
         setRegister({
           ...register,
@@ -45,6 +48,7 @@ const SignUp = () =>  {
     return (
       <div>
         <Header />
+        <h1 style={{color:"white"}}>Eary System</h1>
         <div className=" signup template  d-flex  justify-content-center align-items-center  vh-100 ">
           <div
             className="  form_container p-5 rounded text-white "
@@ -117,8 +121,9 @@ const SignUp = () =>  {
         {error.msg}
       </Alert>
       ))}
-                <Link
-                  to="/"
+
+  <Link
+                   to="/"
                   className="ms-2"
                   style={{ color: "rgb(55, 2, 104)" }}
                 >
