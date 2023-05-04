@@ -18,13 +18,13 @@ router.get("/:Id", (req, res) => {
   const id = req.params.Id;
   try {
     connection.query(
-      "SELECT * FROM history WHERE Id = ?",
+      "SELECT * FROM history WHERE Email = ?",
       [id],
       (error, rows, fields) => {
         if (rows.length === 0) {
           res.sendStatus(404);
         } else {
-          res.json(rows[0]);
+          res.json(rows);
         }
       }
     );
@@ -36,7 +36,7 @@ router.get("/:Id", (req, res) => {
 
 // Create a new history result
 router.post("/", async (req, res) => {
-  const { Exam_id, Email, Degree } = req.body;
+  const { Exam_id, Email, Degree,userId } = req.body;
   try {
     connection.query(
       "INSERT INTO history set ?",
@@ -44,6 +44,8 @@ router.post("/", async (req, res) => {
         Exam_id: Exam_id,
         Email: Email,
         Degree: Degree,
+       
+        
       },
       (error, rows, fields) => {
         res

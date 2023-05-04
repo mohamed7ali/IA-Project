@@ -69,7 +69,7 @@ router.post(
         .promisify(connection.query)
         .call(
           connection,
-          "INSERT INTO user_queue (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
+          "INSERT INTO user (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
           [Name, Email, Phone, hashedPassword, verificationToken]
         );
       res.status(200).json({
@@ -145,6 +145,7 @@ router.post("/login", async (req, res) => {
       name: user.Name,
       id: user.Id,
       status: user.Status,
+      email:user.Email,
     });
   } catch (err) {
     console.log(err);
