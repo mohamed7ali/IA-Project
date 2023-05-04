@@ -4,7 +4,6 @@ const { body, validationResult } = require("express-validator");
 const util = require("util");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-const jwt = require("jsonwebtoken");
 
 // Register a new user
 router.post(
@@ -33,7 +32,7 @@ router.post(
           [Email, Phone]
         );
       if (userInqueue.length > 0) {
-        return res.status(400).json({
+        return res.status(200).json({
           errors: [
             {
               msg: "You are in watting list, wait...",
@@ -49,7 +48,7 @@ router.post(
           Phone,
         ]);
       if (userExists.length > 0) {
-        return res.status(400).json({
+        return res.status(202).json({
           errors: [
             {
               msg: "User already exists with the given Email or Phone number",

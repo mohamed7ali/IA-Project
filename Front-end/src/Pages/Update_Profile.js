@@ -3,31 +3,43 @@ import "../Style_Pages/Update_File.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import React from "react";
-const UpdateProfilePage = () => {
-  // Use state to store user data
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+import axios from "axios";
+import Alert from "react-bootstrap/Alert";
+const ProfileUpdateForm = () => {
+  const [update, setUpdates] = useState({
+    name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    phone: "",
+    err: [],
   });
-
-  // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Submit user data to API or server
-    console.log(user);
+  const { id } = JSON.parse(localStorage.getItem("user"));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUpdates({ ...update, err: [] });
+    axios
+      .put(`http://localhost:4000/users/${id}`, {
+        Name: update.name,
+        Email: update.email,
+        Password: update.password,
+        Phone: update.phone,
+      })
+      .then((res) => {
+        console.log(res);
+        // handle success
+        setUpdates({
+          ...update,
+        });
+        alert(res.data.msg);
+      })
+      .catch((error) => {
+        // handle error
+        setUpdates({
+          ...update,
+          err: error.response.data.errors,
+        });
+      });
   };
-
-  // Handle form input changes
-  const handleChange = (event) => {
-    setUser({
-      ...user,
-      [event.target.name]: event.target.value,
-    });
-  };
-
   return (
     <>
       <Header />
@@ -36,23 +48,13 @@ const UpdateProfilePage = () => {
         <h1 className="form-title">Update Profile</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label className="form-label">First Name</label>
+            <label className="form-label">Name</label>
             <input
               className="form-input"
               type="text"
-              name="firstName"
-              value={user.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label className="form-label">Last Name</label>
-            <input
-              className="form-input"
-              type="text"
-              name="lastName"
-              value={user.lastName}
-              onChange={handleChange}
+              name="Name"
+              value={update.name}
+              onChange={(e) => setUpdates({ ...update, name: e.target.value })}
             />
           </div>
           <div>
@@ -60,42 +62,48 @@ const UpdateProfilePage = () => {
             <input
               className="form-input"
               type="text"
-              name="phone"
-              value={user.phone}
-              onChange={handleChange}
+              name="Phone"
+              value={update.phone}
+              onChange={(e) => setUpdates({ ...update, phone: e.target.value })}
             />
           </div>
           <div>
             <label className="form-label">Email</label>
             <input
               className="form-input"
-              type="email"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
+              type="Email"
+              name="Email"
+              value={update.email}
+              onChange={(e) => setUpdates({ ...update, email: e.target.value })}
             />
           </div>
           <div>
             <label className="form-label">Password</label>
             <input
               className="form-input"
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleChange}
+              type="Password"
+              name="Password"
+              value={update.password}
+              onChange={(e) =>
+                setUpdates({ ...update, password: e.target.value })
+              }
             />
           </div>
-          <div>
-            <label className="form-label">Confirm Password</label>
-            <input
-              className="form-input"
-              type="password"
-              name="confirmPassword"
-              value={user.confirmPassword}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit">Save Changes</button>
+          <button type="submit"> Save Changes</button>
+          {update.err.map((error, index) => (
+            <Alert
+              key={index}
+              style={{
+                color: "white",
+                width: 350,
+                backgroundColor: "#690650",
+                height: 80,
+                borderRadius: 10,
+              }}
+            >
+              {error.msg}
+            </Alert>
+          ))}
         </form>
       </div>
 
@@ -104,4 +112,4 @@ const UpdateProfilePage = () => {
   );
 };
 
-export default UpdateProfilePage;
+export default ProfileUpdateForm;
