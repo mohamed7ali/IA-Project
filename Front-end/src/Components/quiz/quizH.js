@@ -3,10 +3,15 @@ import '../../Style_Pages/Quiz.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactAudioPlayer from 'react-audio-player';
 import Header from "../Header";
+import Button from "../Button";
+import { getAuthUser } from "../../helper/storage";
+
 
 
 
 export function Quizh (){
+  const auth = getAuthUser();
+
     const [showFinalResults,setFinalResults]=useState(false);
    const [currentQuestion,setCurrentQuestion]=useState(0);
    const [score, setScore] = useState(0);
@@ -89,6 +94,7 @@ export function Quizh (){
         <Header/>
              <div className="quiz ">
         <h1 >Eary Test</h1>
+        
         <h2 className="score">Score: {score}</h2>
         {showFinalResults ?(
     <div className="final-result">
@@ -125,6 +131,15 @@ export function Quizh (){
         </ul>
 
 
+{auth.status=== 1 && (
+                  <>
+                          <div className="btn1" style={{backgroundColor:"rgb(248, 243, 243)"}}>
+        <Button name={'Edit'} go_to={'/edit'}/>
+        <Button name={'Delete'} go_to={''}/>
+        
+</div>
+          </>
+                )}
      </div>
         
     )}

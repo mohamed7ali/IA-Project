@@ -11,6 +11,10 @@ import UpdateProfilePage from "./Pages/Update_Profile";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Guest from "./middleware/Guest";
 import { History } from "./Pages/history";
+import { EditQuestion } from "./Pages/Edit_question";
+import QuestionAdmin from "./Pages/QuestionsAdmin";
+
+
 
 export const routes = createBrowserRouter([
   {
@@ -64,6 +68,15 @@ export const routes = createBrowserRouter([
         path: "/add",
         element: <AddQuestion />,
       },
+      {
+        path: "/edit",
+        element: <EditQuestion />,
+      },
+{
+  path:"/Questions",
+  element:<QuestionAdmin/>
+
+}
     ],
   },
   {

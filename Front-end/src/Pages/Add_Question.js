@@ -16,19 +16,21 @@ export const AddQuestion = () => {
           </div>
 
           <div className="input-quistion">
-            <label className="label">Add Question</label>
+            <label className="label"> Question</label>
             <input type="text" name=" Question" />
 
-            <label className="label">right choise</label>
+            <label className="label">answer1</label>
             <input type="text" />
 
-            <label className="label">false choice</label>
+            <label className="label">answer2</label>
             <input type="text" />
 
-            <label className="label">false choice</label>
+            <label className="label">answer3</label>
             <input type="text" />
 
-            <label className="label">false choice</label>
+            <label className="label">answer4</label>
+            <input type="text" />
+            <label className="label">Correct answer</label>
             <input type="text" />
           </div>
 

@@ -28,8 +28,10 @@ const Header = () => {
            
  <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
            <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
-          { auth&&
+          { auth&&auth.status!== 1&&
            <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
+                     { auth&&auth.status=== 1&&
+           <HeaderLinks go_to={'/Questions'} name={" Questions   "} />}
 
              {/* unAuthenticated Route  */}
              {!auth && (
