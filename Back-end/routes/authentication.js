@@ -5,7 +5,7 @@ const util = require("util");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
-// Register a new user
+// Register a new user, added to the user_queue table
 router.post(
   "/register",
   body("Name").notEmpty().withMessage("Name is required"),
@@ -64,7 +64,7 @@ router.post(
       // Generate random token for Email verification
       const verificationToken = crypto.randomBytes(20).toString("hex");
 
-      // Insert the user into the database
+      // Insert the user into the user_queue table
       await util
         .promisify(connection.query)
         .call(
