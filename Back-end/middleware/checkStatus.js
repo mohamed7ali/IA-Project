@@ -4,7 +4,6 @@ const query = util.promisify(connection.query).bind(connection);
 
 const checkUserStatus = async (req, res, next) => {
   const Id = req.headers.id;
-  console.log(req.headers);
   try {
     // Fetch user status from the database
     const userStatus = await query(`SELECT Status FROM user WHERE Id=${Id}`);

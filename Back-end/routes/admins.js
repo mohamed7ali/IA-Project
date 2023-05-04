@@ -35,10 +35,12 @@ router.post("/", async (req, res) => {
       },
 
       (err, result, fields) => {
-        res.status(201).json({
-          message: "the admin was added to the database",
-          token: verificationToken,
-        });
+        res
+          .status(201)
+          .json({
+            message: "the admin was added to the database",
+            token: verificationToken,
+          });
       }
     );
   } catch (err) {
