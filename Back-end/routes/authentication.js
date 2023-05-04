@@ -24,14 +24,30 @@ router.post(
     const { Name, Email, Phone, Password } = req.body;
 
     try {
-      // Check if user already exists with the given Email or Phone number
-      const userExists = await util
+      // Check if user already exists in user_queue
+      const userInqueue = await util
         .promisify(connection.query)
         .call(
           connection,
           "SELECT Id FROM user_queue WHERE Email = ? OR Phone = ?",
           [Email, Phone]
         );
+      if (userInqueue.length > 0) {
+        return res.status(400).json({
+          errors: [
+            {
+              msg: "You are in watting list, wait...",
+            },
+          ],
+        });
+      }
+      // Check if user already exists with the given Email or Phone number
+      const userExists = await util
+        .promisify(connection.query)
+        .call(connection, "SELECT Id FROM user WHERE Email = ? OR Phone = ?", [
+          Email,
+          Phone,
+        ]);
       if (userExists.length > 0) {
         return res.status(400).json({
           errors: [
@@ -54,15 +70,13 @@ router.post(
         .promisify(connection.query)
         .call(
           connection,
-          "INSERT INTO user (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
+          "INSERT INTO user_queue (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
           [Name, Email, Phone, hashedPassword, verificationToken]
         );
-
-      // Send Email with verification link
-
-      res
-        .status(200)
-        .json({ message: "User Add IN queue please Wait Admin To Confirm" });
+      res.status(200).json({
+        message:
+          "The user was added to the queue, please Wait for Admin To Confirm",
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ errors: [{ msg: "Internal server error" }] });
@@ -81,18 +95,32 @@ router.post("/login", async (req, res) => {
       .json({ errors: [{ msg: "Email and password are required" }] });
   }
   try {
-    // Check if user exists in the database
-    const query = "SELECT * FROM user WHERE Email = ?";
-    const rows = await util
+    // QUERY ON USER TABLE
+    const queryOnUser = "SELECT * FROM user WHERE Email = ?";
+    const rowFromUser = await util
       .promisify(connection.query)
-      .call(connection, query, [Email]);
-    if (!rows.length) {
+      .call(connection, queryOnUser, [Email]);
+    // QUERY ON USER_QUEUE TABLE
+    const queryOnUserQueue = "SELECT * FROM user_queue WHERE Email = ?";
+    const rowsFromUserQueue = await util
+      .promisify(connection.query)
+      .call(connection, queryOnUserQueue, [Email]);
+
+    // ERSPONSE FROM TWO TABLE
+    // Check if user exists in the user_queue table.
+    if (rowsFromUserQueue.length) {
+      return res.status(401).json({
+        errors: [{ msg: "Your Email does not confirm by the admin yet." }],
+      });
+    }
+    // Check if user exists in the user table.
+    else if (!rowFromUser.length) {
       return res
         .status(401)
         .json({ errors: [{ msg: "Your Email does not exist in database." }] });
     }
 
-    const user = rows[0];
+    const user = rowFromUser[0];
 
     // Check if password is correct
     const passwordMatch = await bcrypt.compare(
@@ -111,8 +139,14 @@ router.post("/login", async (req, res) => {
 
     // Get token
     const token = user.verification_token;
-    // Send token in response
-    res.json({ msg: "login successfully", token: token, status: user.Status });
+    // Send token in response and user info.
+    res.json({
+      msg: "login successfully",
+      token: token,
+      name: user.Name,
+      id: user.Id,
+      status: user.Status,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ errors: [{ msg: "Server error" }] });
