@@ -3,7 +3,14 @@ import "../Style_Pages/New_Users_Queue.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Button from "../Components/Button";
+import axios from "axios";
 const NewUsersQueue = () => {
+  const { id } = JSON.parse(localStorage.getItem("user"));
+  axios
+    .get(`http://localhost:4000/newUsers/`, { headers: { Id: id } })
+    .then((res) => {
+      console.log(res);
+    });
   return (
     <>
       <Header />
