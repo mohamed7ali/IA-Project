@@ -14,13 +14,14 @@ router.post(
   body("Password")
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters long"),
+    body("Status"),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { Name, Email, Phone, Password } = req.body;
+    const { Name, Email, Phone, Password, Status } = req.body;
 
     try {
       // Check if user already exists in user_queue
@@ -28,7 +29,7 @@ router.post(
         .promisify(connection.query)
         .call(
           connection,
-          "SELECT Id FROM user_queue WHERE Email = ? OR Phone = ?",
+          "SELECT Id FROM user WHERE Email = ? OR Phone = ?",
           [Email, Phone]
         );
       if (userInqueue.length > 0) {
@@ -65,13 +66,27 @@ router.post(
       const verificationToken = crypto.randomBytes(20).toString("hex");
 
       // Insert the user into the user_queue table
-      await util
-        .promisify(connection.query)
-        .call(
-          connection,
-          "INSERT INTO user (Name, Email, Phone, Password, verification_token) VALUES (?, ?, ?, ?, ?)",
-          [Name, Email, Phone, hashedPassword, verificationToken]
-        );
+      if (Status) {
+        await util
+          .promisify(connection.query)
+          .call(
+            connection,
+            "INSERT INTO user (Name, Email, Phone, Password, verification_token, Status) VALUES (?, ?, ?, ?, ?, ?)",
+            [Name, Email, Phone, hashedPassword, verificationToken, Status]
+          );
+        res.status(200).json({
+          message: "The Admin was added to the table.",
+        });
+      } else {
+        await util
+          .promisify(connection.query)
+          .call(
+            connection,
+            "INSERT INTO user_queue (Name, Email, Phone, Password, verification_token, Status) VALUES (?, ?, ?, ?, ?,?)",
+            [Name, Email, Phone, hashedPassword, verificationToken,Status]
+          );
+      }
+
       res.status(200).json({
         message:
           "The user was added to the queue, please Wait for Admin To Confirm",
@@ -145,7 +160,7 @@ router.post("/login", async (req, res) => {
       name: user.Name,
       id: user.Id,
       status: user.Status,
-      email:user.Email,
+      Email:user.Email
     });
   } catch (err) {
     console.log(err);

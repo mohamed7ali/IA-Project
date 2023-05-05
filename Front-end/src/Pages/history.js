@@ -8,6 +8,7 @@ import axios from "axios";
 export const History = () => {
   const auth = getAuthUser();
   //let {email}=auth.data.email;
+  
 console.log(auth.email)
   const [histories, setHistory] = useState({
     loading: true,
@@ -19,7 +20,7 @@ console.log(auth.email)
   useEffect(() => {
     setHistory({ ...histories, loading: true });
     axios
-      .get("http://localhost:4000/histories/"+auth.email)
+      .get("http://localhost:4000/histories/"+auth.Email)
       .then((resp) => {
         setHistory({ ...histories, results: resp.data, loading: false, err: null });
         console.log(resp);
@@ -50,7 +51,7 @@ console.log(auth.email)
           {
           histories.results.map((history) => (
             <tr>
-              <td>{history.Exam_id}</td>
+              <td>{history.Id}</td>
               <td>{history.Degree}%</td>
               <td>{history.Email}</td>
               <td>{history.Date}</td>

@@ -14,8 +14,8 @@ router.get("/", (req, res) => {
 });
 
 // Get history result by ID
-router.get("/:Id", (req, res) => {
-  const id = req.params.Id;
+router.get("/:Email", (req, res) => {
+  const id = req.params.Email;
   try {
     connection.query(
       "SELECT * FROM history WHERE Email = ?",
@@ -36,12 +36,12 @@ router.get("/:Id", (req, res) => {
 
 // Create a new history result
 router.post("/", async (req, res) => {
-  const { Exam_id, Email, Degree,userId } = req.body;
+  const {  Email, Degree, } = req.body;
   try {
     connection.query(
       "INSERT INTO history set ?",
       {
-        Exam_id: Exam_id,
+        
         Email: Email,
         Degree: Degree,
        
