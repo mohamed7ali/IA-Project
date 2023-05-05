@@ -12,7 +12,7 @@ export const AddQuestion = () => {
         <form>
           <div>
             <label className="label">Select audio</label>
-            <input className="input" type="file" />
+            <input className="text" type="file" />
           </div>
 
           <div className="input-quistion">
