@@ -108,7 +108,7 @@ const Login = () => {
                 color: "white",
                 width: 350,
                 backgroundColor: "#690650",
-                height: 60,
+                height: 90,
                 borderRadius: 10,
               }}
             >

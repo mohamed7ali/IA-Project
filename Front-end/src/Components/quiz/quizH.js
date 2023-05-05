@@ -1,11 +1,12 @@
-import React ,{useState} from "react";
+import React ,{useState,useEffect} from "react";
 import '../../Style_Pages/Quiz.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactAudioPlayer from 'react-audio-player';
 import Header from "../Header";
 import Button from "../Button";
-import { getAuthUser } from "../../helper/storage";
 
+import axios from "axios";
+import { getAuthUser } from "../../helper/storage";
 
 
 
@@ -15,120 +16,98 @@ export function Quizh (){
     const [showFinalResults,setFinalResults]=useState(false);
    const [currentQuestion,setCurrentQuestion]=useState(0);
    const [score, setScore] = useState(0);
-   const questions = [
-    {
-      text: "What is the capital of America?",
-      "audio" : "http://ia802609.us.archive.org/13/items/quraninindonesia/001AlFaatihah.mp3",
-      
-      options: [
-        { id: 0, text: "New York City", isCorrect: false },
-        { id: 1, text: "Boston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Washington DC", isCorrect: true },
-      ],
-    },
-    {
-      text: "What year was the Constitution of America written?",
-      "audio" : "https://ia801406.us.archive.org/12/items/002_20221103_202211/012.mp3",
-      options: [
-        { id: 0, text: "1787", isCorrect: true },
-        { id: 1, text: "1776", isCorrect: false },
-        { id: 2, text: "1774", isCorrect: false },
-        { id: 3, text: "1826", isCorrect: false },
-      ],
-    },
-    {
-      text: "Who was the second president of the US?",
-     
-      options: [
-        { id: 0, text: "John Adams", isCorrect: true },
-        { id: 1, text: "Paul Revere", isCorrect: false },
-        { id: 2, text: "Thomas Jefferson", isCorrect: false },
-        { id: 3, text: "Benjamin Franklin", isCorrect: false },
-      ],
-    },
-    {
-      text: "What is the largest state in the US?",
-      
-      options: [
-        { id: 0, text: "California", isCorrect: false },
-        { id: 1, text: "Alaska", isCorrect: true },
-        { id: 2, text: "Texas", isCorrect: false },
-        { id: 3, text: "Montana", isCorrect: false },
-      ],
-    },
-    {
-      text: "Which of the following countries DO NOT border the US?",
-     
-      options: [
-        { id: 0, text: "Canada", isCorrect: false },
-        { id: 1, text: "Russia", isCorrect: true },
-        { id: 2, text: "Cuba", isCorrect: true },
-        { id: 3, text: "Mexico", isCorrect: false },
-      ],
-    },
-  ];
+   console.log(auth.email)
+   const [exams, setExam] = useState({
+     loading: true,
+     results: [],
+     err: null,
+     reload: 0,
+   });
+ 
+   useEffect(() => {
+     setExam({ ...exams, loading: true });
+     axios
+       .get("http://localhost:4000/quizzes")
+       .then((resp) => {
+         setExam({ ...exams, results: resp.data, loading: false, err: null });
+         console.log(resp);
+       })
+       .catch((err) => {
+         setExam({
+           ...exams,
+           loading: false,
+           err: " something went wrong, please try again later ! ",
+         });
+       });
+   }, [exams.reload]);
   const optionClicked = (isCorrect) => {
     // Increment the score
-    if (isCorrect) {
-      setScore(score + 1);
-    }
+    // if (isCorrect) {
+    //   setScore(score + 1);
+    // }
 
-    if (currentQuestion + 1 < questions.length) {
+    if (currentQuestion + 1 < exams.results.length) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-        setFinalResults(true);
-    }
-  };
+    // } else {
+    //     setFinalResults(true);
+    // }
+  };}
 
   /* Resets the game back to default */
-  const restartQuiz = () => {
-    setScore(0);
-    setCurrentQuestion(0);
-    setFinalResults(false);
-  };
+  // const restartQuiz = () => {
+  //   setScore(0);
+  //   setCurrentQuestion(0);
+  //   setFinalResults(false);
+  // };
 
 
     return(
         <>
         <Header/>
+        {exams.loading==true&&(<h1>loading</h1>)}
              <div className="quiz ">
         <h1 >Eary Test</h1>
         
-        <h2 className="score">Score: {score}</h2>
-        {showFinalResults ?(
-    <div className="final-result">
-        <h1 >Final Result</h1>
-        <h2>
-            {score} out of {questions.length} correct - (
-            {(score / questions.length) * 100}%)
-          </h2>
-          <button className="btn1" onClick={() => restartQuiz()}>Restart Quiz</button>
-    </div>
-
-        ):(
+   
     <div className="question-card ">
-        <h2 >Question {currentQuestion +1} out of {questions.length}</h2><br/><br/>
+      {exams.loading===false&&exams.err==null&&(<>
+        <h2 >Question {currentQuestion +1} out of {exams.results.length}</h2><br/><br/>
                 <ReactAudioPlayer
-                    src={questions[currentQuestion].audio}
+                    src={exams.results[currentQuestion].Audio}
                     autoPlay
                     controls
                 />
 <br/><br/>
-        <h3 className="question-text">{questions[currentQuestion].text}</h3>
+        <h3 className="question-text">{exams.results[currentQuestion].Question}</h3>
                         <ul className="ul1">
-                        {questions[currentQuestion].options.map((option) => {
-              return (
+                       
+              
                 <li className="li1"
-                  key={option.id}
-                  onClick={() => optionClicked(option.isCorrect)}
+                 onClick={() => optionClicked()}
                 >
-                  {option.text}
+                  {exams.results[currentQuestion].Ans_1}
                 </li>
-              );
+                <li className="li1"
+                 onClick={() => optionClicked()}
+                >
+                  {exams.results[currentQuestion].Ans_2}
+                </li>
+                <li className="li1"
+                 onClick={() => optionClicked()}
+                >
+                  {exams.results[currentQuestion].Ans_3}
+                </li>
+                <li className="li1"
+                 onClick={() => optionClicked()}
+                >
+                  {exams.results[currentQuestion].Ans_4}
+                </li>
+             
 
-                            })}
+                           
         </ul>
+      </>)}
+       
 
 
 {auth.status=== 1 && (
@@ -142,11 +121,11 @@ export function Quizh (){
                 )}
      </div>
         
-    )}
+   
     </div>
         </>
 
     );
 
-    
 }
+

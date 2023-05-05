@@ -28,7 +28,7 @@ const checkContactMessage = require("./middleware/checkContactMessage");
 
 // ==================API ROUTES [ENDPOINTS]=================
 app.use("/admins", admin);
-app.use("/quizzes", checkUserStatus, examQuestions);
+app.use("/quizzes",  examQuestions);
 app.use("/users", user);
 app.use("/newUsers", checkUserStatus, userQueue);
 app.use("/histories", history);
