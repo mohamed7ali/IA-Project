@@ -58,8 +58,7 @@ export function Quizh() {
       })
       .then((resp) => {
         setHistory({ ...histories, loading: false, err: [] });
-
-        console.log(resp);
+        alert(resp.data.message);
       })
       .catch((errors) => {
         console.log(errors);
@@ -110,11 +109,11 @@ export function Quizh() {
               {(score / exams.results.length) * 100}%)
             </h2>
 
-            <button className="btn1" onClick={() => restartQuiz()}>
+            <button className="btn2" onClick={() => restartQuiz()}>
               Restart Quiz
             </button>
             <button
-              className="btn1"
+              className="btn2"
               onClick={(e) =>
                 setHistory({
                   ...histories,
@@ -195,7 +194,7 @@ export function Quizh() {
           </div>
         )}
       </div>
-          
+
     </>
   );
 }

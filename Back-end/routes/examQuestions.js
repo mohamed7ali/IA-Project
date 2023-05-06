@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
     const rows = await query(
       "SELECT * FROM exam_question ORDER BY RAND() LIMIT 5"
     );
-    console.log(rows);
 
     // Send the quiz data as JSON
     res.json(rows);
@@ -47,6 +46,45 @@ router.post("/", async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+// Route to fetch all quizies from data
+router.get("/all", async (req, res) => {
+  try {
+    // Fetch five random quiz questions with answers from the database
+    const rows = await query("SELECT * FROM exam_question");
+
+    // Send the quiz data as JSON
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch quiz data" });
+  }
+});
+// Retrieve a single quiz by ID
+router.get("/:Id", (req, res) => {
+  try {
+    const Id = req.params.Id;
+    connection.query(
+      "SELECT * FROM exam_question WHERE ?",
+      { Id: Id },
+      (error, rows, fields) => {
+        if (error) {
+          console.error(error);
+          res.sendStatus(500);
+        } else if (rows.length === 0) {
+          res.sendStatus(404);
+        } else {
+          res.json(rows[0]);
+        }
+      }
+    );
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
+
 
 // Update a question by ID
 router.put("/:Id", (req, res) => {

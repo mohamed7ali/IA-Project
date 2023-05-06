@@ -1,127 +1,137 @@
 import React ,{useState,useEffect} from "react";
-import '../Style_Pages/Quiz.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactAudioPlayer from 'react-audio-player';
 
-
+import "../Style_Pages/QuestionAdmin.css";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 import Header from "../Components/Header";
 import Button from "../Components/Button";
 import { getAuthUser } from "../helper/storage";
 import { setQuestion } from "../helper/SetQuestion";
+import Footer from "../Components/Footer";
 
 
 
 export function QuestionsAdmin (){
-  const auth = getAuthUser();
-   const [currentQuestion,setCurrentQuestion]=useState(0);
-   console.log(auth.email)
-   const [exams, setExam] = useState({
-     loading: true,
-     results: [],
-     err: null,
-     reload: 0,
-   });
- 
-   useEffect(() => {
-     setExam({ ...exams, loading: true });
-     axios
-       .get("http://localhost:4000/quizzes")
-       .then((resp) => {
-         setExam({ ...exams, results: resp.data, loading: false, err: null });
-         console.log(resp);
-        
-       })
-       .catch((err) => {
-         setExam({
-           ...exams,
-           loading: false,
-           err: " something went wrong, please try again later ! ",
-         });
-       });
-   }, [exams.reload]);
-  const optionClicked = (isCorrect) => {
-    setQuestion( exams.results.data[currentQuestion]);
 
-    if (currentQuestion + 1 < exams.results.length) {
-      setCurrentQuestion(currentQuestion + 1);
-     
-      //  setQuestion( exams.results.data[currentQuestion]+1);
-     
-     } 
-     
+  const { id } = JSON.parse(localStorage.getItem("user"));
+  const [usersArray, setUsersArray] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/quizzes/`)
+      .then((res) => {
+        setUsersArray(res.data);
+        usersArray.push(res.data)
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleCheckboxChange = (event, user) => {
+    if (event.target.checked) {
+      setSelectedUsers((prevSelectedUsers) => [
+        ...prevSelectedUsers,
+        user
+      ]);
+    } else {
+      setSelectedUsers((prevSelectedUsers) =>
+        prevSelectedUsers.filter((selectedUser) => selectedUser !== user)
+      );
     }
- 
-    
- 
+  };
+
  
 
+  const handleDeleteClick = () => {
+    if (selectedUsers.length > 0) {
+      selectedUsers.forEach(async (user) => {
+        axios
+          .delete(`http://localhost:4000/quizzes/${user.Id}`, {
+            headers: {
+              Id: id,
+            },
+          })
+          .then((res) => {
+            console.log(res.data.message);
+            console.log(res.data);
+            setSelectedUsers((prevSelectedUsers) => []);
+            // remove deleted user from the state
+            setUsersArray((prevUsers) =>
+              prevUsers.filter((currentUser) => currentUser !== user)
+            );
+            alert(`${user.Question} has been deleted!`);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    }
+  };
 
-    return(
-        <>
-        <Header/>
-        {exams.loading==true&&(<h1>loading</h1>)}
-             <div className="quiz ">
-        <h1 >Eary Test</h1>
-        
-           
+  return (
+    <>
+      <Header />
+
+      <div className="table_container">
+        <table>
+          <thead>
+            <tr>
+              <th>check</th>
+              <th>Id</th>
+              <th>Question</th>
+              <th>Ans_1</th>
+              <th>Ans_2</th>
+              <th>Ans_3</th>
+              <th>Ans_4</th>
+              <th>rightChoise</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {usersArray.map((user) => (
+              <tr key={user.Id}>
+                <td>
+                  <input
+                    type="checkbox"
+                    onChange={(event) => handleCheckboxChange(event, user)}
+                  />
+                </td>
+                <td>{user.Id}</td>
+                <td>{user.Question}</td>
+                <td>{user.Ans_1}</td>
+                <td>{user.Ans_2}</td>
+                <td>{user.Ans_3}</td>
+                <td>{user.Ans_4}</td>
+                <td>{user.Correct}</td>
+                <td>       <Link
+                  to={"/edit+user.Id"}
+                  className="btn btn-sm btn-primary mx-2">
+                  Update
+                </Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <br />
+
+  
        
-    <div className="question-card ">
-      {exams.loading===false&&exams.err==null&&(<>
-        <h2 >Question {currentQuestion +1} out of {exams.results.length}</h2><br/><br/>
-                <ReactAudioPlayer
-                    src={exams.results[currentQuestion].Audio}
-                    autoPlay
-                    controls
-                />
-<br/><br/>
-        <h3 className="question-text">{exams.results[currentQuestion].Question}</h3>
-                        <ul className="ul1">
-                       
-              
-                <li className="li1"
-                 onClick={() => optionClicked()}
-                >
-                  {exams.results[currentQuestion].Ans_1}
-                </li>
-                <li className="li1"
-                 onClick={() => optionClicked()}
-                >
-                  {exams.results[currentQuestion].Ans_2}
-                </li>
-                <li className="li1"
-                 onClick={() => optionClicked()}
-                >
-                  {exams.results[currentQuestion].Ans_3}
-                </li>
-                <li className="li1"
-                 onClick={() => optionClicked()}
-                >
-                  {exams.results[currentQuestion].Ans_4}
-                </li>
-             
 
-                           
-        </ul>
-      </>)}
-       
+       <button 
+     onClick={handleDeleteClick}
+     
+     disabled={selectedUsers.length === 0}>
+      Delete
+        </button>
+      </div>
 
-
-{auth.status=== 1 && (
-                  <>
-                          <div className="btn1" style={{backgroundColor:"rgb(248, 243, 243)"}}>
-        <Button name={'Edit'} go_to={'/edit'}/>
-        <Button name={'Delete'} go_to={''}/>
-        
-</div>
-          </>
-                )}
-     </div>
-        
-        
-       </div>
-        </>
+      <Footer />
+    </>
 
       );
 

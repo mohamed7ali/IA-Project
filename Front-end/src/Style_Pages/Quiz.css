@@ -107,6 +107,12 @@ border-radius:7px 7px 7px 7px ;
     padding: 10px;
     margin-bottom: 20px;
 }
+.btn2{
+    margin-left: 270px;
+    display: inline-block;
+    
+
+}
 .score{
     color: white;
 }

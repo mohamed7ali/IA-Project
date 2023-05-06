@@ -70,7 +70,7 @@ export const routes = createBrowserRouter([
         element: <AddQuestion />,
       },
       {
-        path: "/edit",
+        path: "/edit:id",
         element: <EditQuestion />,
       },
       {

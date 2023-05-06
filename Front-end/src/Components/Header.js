@@ -23,11 +23,11 @@ const Header = () => {
         <img src={logo} alt="Logo"></img>
       </div>
 
-
+      {auth && (<>     <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
+      <HeaderLinks go_to={'/contact'} name={"Contact Us"} /></>)}
       <HeaderLinks go_to={'/home'} name={"Home"} />
 
-      <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
-      <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
+ 
       {auth && auth.status !== 1 &&
         <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
       {auth && auth.status === 1 &&
