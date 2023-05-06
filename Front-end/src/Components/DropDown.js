@@ -25,7 +25,8 @@ const DropDown = () => {
 
     
            <li><DropDownLinks className="a" go_to={"/updatePage"} name={"Update profile"} /></li>
-           <li><DropDownLinks className="a" go_to={"/history"} name={"Exams history"} /></li>
+           {auth.status!=1&&( <li><DropDownLinks className="a" go_to={"/history"} name={"Exams history"} /></li>)}
+          
            {auth.status=== 1 && (
                   <>
                    <li><DropDownLinks className="a" go_to={"/newUser"} name={"Requests"} /></li>

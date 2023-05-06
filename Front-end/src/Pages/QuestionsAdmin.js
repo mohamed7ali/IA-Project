@@ -83,6 +83,7 @@ export function QuestionsAdmin (){
             <tr>
               <th>check</th>
               <th>Id</th>
+              <th>Audio</th>
               <th>Question</th>
               <th>Ans_1</th>
               <th>Ans_2</th>
@@ -102,6 +103,7 @@ export function QuestionsAdmin (){
                   />
                 </td>
                 <td>{user.Id}</td>
+                <td>{user.Audio}</td>
                 <td>{user.Question}</td>
                 <td>{user.Ans_1}</td>
                 <td>{user.Ans_2}</td>

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ReactAudioPlayer from "react-audio-player";
 import Header from "../Header";
 import Button from "../Button";
-
+import One from '../../Style_Pages/sound/1.mp3';
 import axios from "axios";
 import { getAuthUser } from "../../helper/storage";
 
@@ -73,7 +73,7 @@ export function Quizh() {
   const optionClicked = (isCorrect) => {
     //Increment the score
 
-    if (isCorrect === exams.results[currentQuestion].Correct) {
+    if (isCorrect == exams.results[currentQuestion].Correct) {
       setScore(score + 1);
     }
 
@@ -112,17 +112,7 @@ export function Quizh() {
             <button className="btn2" onClick={() => restartQuiz()}>
               Restart Quiz
             </button>
-            <button
-              className="btn2"
-              onClick={(e) =>
-                setHistory({
-                  ...histories,
-                  Degree: (score / exams.results.length) * 100,
-                })
-              }
-            >
-              Add To History
-            </button>
+
           </div>
         ) : (
           <div className="question-card ">
@@ -135,7 +125,8 @@ export function Quizh() {
                 <br />
                 <ReactAudioPlayer
                   src={exams.results[currentQuestion].Audio}
-                  // autoPlay
+                  
+                  autoPlay
                   controls
                 />
                 <br />
