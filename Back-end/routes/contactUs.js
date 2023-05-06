@@ -55,12 +55,12 @@ router.post(
           });
         } else {
           console.log("Email sent: " + info.response);
-          return res.json({ message: "Message sent successfully" });
+          return res.json({ msg: "Message sent successfully"  });
         }
       });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: "Internal Server Error" });
+      return res.status(500).json({errors:[{msg: "Internal Server Error"}]  });
     }
   }
 );
