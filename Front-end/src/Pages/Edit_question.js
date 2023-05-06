@@ -16,6 +16,7 @@ export const EditQuestion = () => {
     Ans_2:"",
     Ans_3:"",
     Ans_4:"",
+    Correct:"",
     loading: false,
     reload: false,
     success: null,
@@ -27,24 +28,27 @@ export const EditQuestion = () => {
 
     setQuestion({ ...question, loading: true });
 
-    const formData = new FormData();
-    formData.append("Audio", question.Audio);
-    formData.append("Question", question.Question);
-    formData.append("Ans_1", question.Ans_1);
-    formData.append("Ans_2", question.Ans_2);
-    formData.append("Ans_3", question.Ans_3);
-    formData.append("Ans_4", question.Ans_4);
+    
   
     axios
-      .put("http://localhost:4000/quizzes/" + id, formData, {
-     
+      .put("http://localhost:4000/quizzes/" + id , {
+        Audio: question.Audio,
+        Question: question.Question,
+        Ans_1: question.Ans_1,
+        Ans_2: question.Ans_2,
+        Ans_3: question.Ans_3,
+        Ans_4: question.Ans_4,
+        Correct:question.Correct
+       
       })
       .then((resp) => {
+        alert(resp.data.message)
         setQuestion({
           ...question,
           loading: false,
           success: "Question updated successfully !",
-          reload: question.reload + 1,
+         
+          
         });
       })
       .catch((err) => {
@@ -89,11 +93,7 @@ export const EditQuestion = () => {
    <div className="form">
      <h1 className="title">Edit Questions and Answers</h1>
      
-        {question.success && (
-        <Alert variant="success" className="p-2">
-          {question.success}
-        </Alert>
-      )}
+       
      <form onSubmit={updateQuestion} >
          
        <div>
@@ -105,7 +105,7 @@ export const EditQuestion = () => {
        <div className="input-quistion">
          <label className="label"> Question</label>
          <input type="text" name=" Question" value={question.Question}
-            onChange={(e) => setQuestion({ ...question, Question: e.target.value })} placeholder="Audio"   />
+            onChange={(e) => setQuestion({ ...question, Question: e.target.value })}   />
 
          <label className="label" >answer1</label>
          <input className="inputAns" type="text" value={question.Ans_1}
@@ -129,12 +129,13 @@ export const EditQuestion = () => {
             onChange={(e) => setQuestion({ ...question, Ans_4: e.target.value })}/>
 
        
-           {/* <label className="label"> Correct Ans</label>
-         <input type="text" name=" Question"   /> */}
+            <label className="label"> Correct Ans</label>
+         <input type="text" name=" Question"  value={question.Correct}
+            onChange={(e) => setQuestion({ ...question, Correct: e.target.value })}  /> 
       
        </div>
 
-       <button style={{marginLeft:400}} type="submit" >Update</button>
+       <button style={{marginLeft:400}} disabled={updateQuestion.loading === true} >Update</button>
      </form>
    </div>
 

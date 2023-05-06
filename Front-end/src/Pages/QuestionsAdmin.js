@@ -109,7 +109,7 @@ export function QuestionsAdmin (){
                 <td>{user.Ans_4}</td>
                 <td>{user.Correct}</td>
                 <td>       <Link
-                  to={"/edit+user.Id"}
+                  to={"/edit"+"/"+user.Id}
                   className="btn btn-sm btn-primary mx-2">
                   Update
                 </Link></td>
