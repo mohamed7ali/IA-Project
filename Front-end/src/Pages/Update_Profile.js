@@ -5,7 +5,9 @@ import Footer from "../Components/Footer";
 import React from "react";
 import axios from "axios";
 import Alert from "react-bootstrap/Alert";
+import { getAuthUser } from "../helper/storage";
 const ProfileUpdateForm = () => {
+  const auth = getAuthUser();
   const [update, setUpdates] = useState({
     name: "",
     email: "",
@@ -53,6 +55,7 @@ const ProfileUpdateForm = () => {
               className="form-input"
               type="text"
               name="Name"
+              placeholder={auth.name}
               value={update.name}
               onChange={(e) => setUpdates({ ...update, name: e.target.value })}
             />

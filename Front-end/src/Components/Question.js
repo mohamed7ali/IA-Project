@@ -16,38 +16,33 @@ const Question = (props) => {
             
           <div>
             <label className="label"> Audio</label>
-            <input className="input" type="Text"  />
+            <input className="input" type="Text" placeholder={question.Audio} />
           </div>
 
           <div className="input-quistion">
             <label className="label"> Question</label>
-            <input type="text" name=" Question" />
+            <input type="text" name=" Question" placeholder={question.Question} />
 
             <label className="label" >answer1</label>
-            <input className="inputAns" type="text" />
-{/* 
-            <label className="label">isCorrect</label>
-            <input  placeholder="true/false" className="inputAns" type="text" /> */}
+            <input className="inputAns" type="text" placeholder={question.Ans_1} />
 
-            <label className="label">answer3</label>
-            <input className="inputAns"type="text" />
 
-            {/* <label className="label">isCorrect</label>
-            <input placeholder="true/false" className="inputAns" type="text" /> */}
+            <label className="label">answer2</label>
+            <input className="inputAns"type="text" placeholder={question.Ans_2}/>
+
+           
 
             <label className="label" >answer3</label>
-            <input className="inputAns" type="text" />
+            <input className="inputAns" type="text"placeholder={question.Ans_3} />
 
-            {/* <label className="label">isCorrect</label>
-            <input placeholder="true/false" className="inputAns" type="text" /> */}
+           
 
             <label className="label">answer4</label>
-            <input className="inputAns"type="text" />
+            <input className="inputAns"type="text"placeholder={question.Ans_4} />
 
-            {/* <label className="label">isCorrect</label>
-            <input placeholder="true/false" className="inputAns" type="text" /> */}
+          
               <label className="label"> Correct Ans</label>
-            <input type="text" name=" Question" />
+            <input type="text" name=" Question"placeholder={question.Correct} />
          
           </div>
 

@@ -31,7 +31,7 @@ export function QuestionsAdmin (){
        .then((resp) => {
          setExam({ ...exams, results: resp.data, loading: false, err: null });
          console.log(resp);
-         setQuestion(resp.data);
+        
        })
        .catch((err) => {
          setExam({
@@ -42,13 +42,19 @@ export function QuestionsAdmin (){
        });
    }, [exams.reload]);
   const optionClicked = (isCorrect) => {
-    
+    setQuestion( exams.results.data[currentQuestion]);
 
     if (currentQuestion + 1 < exams.results.length) {
       setCurrentQuestion(currentQuestion + 1);
-     } }
-
-  /* Resets the game back to default */
+     
+      //  setQuestion( exams.results.data[currentQuestion]+1);
+     
+     } 
+     
+    }
+ 
+    
+ 
  
 
 
