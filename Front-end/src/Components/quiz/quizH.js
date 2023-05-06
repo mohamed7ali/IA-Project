@@ -41,24 +41,26 @@ export function Quizh (){
        });
    }, [exams.reload]);
   const optionClicked = (isCorrect) => {
-    // Increment the score
-    // if (isCorrect) {
-    //   setScore(score + 1);
-    // }
+    //Increment the score
+    
+    if (isCorrect===exams.results[currentQuestion].Correct) {
+      console.log("fsjfej",exams.results[currentQuestion].Correct)
+      setScore(score + 1);
+    }
 
     if (currentQuestion + 1 < exams.results.length) {
       setCurrentQuestion(currentQuestion + 1);
-    // } else {
-    //     setFinalResults(true);
-    // }
+     } else {
+         setFinalResults(true);
+     
   };}
 
   /* Resets the game back to default */
-  // const restartQuiz = () => {
-  //   setScore(0);
-  //   setCurrentQuestion(0);
-  //   setFinalResults(false);
-  // };
+  const restartQuiz = () => {
+    setScore(0);
+    setCurrentQuestion(0);
+   setFinalResults(false);
+   };
 
 
     return(
@@ -68,7 +70,20 @@ export function Quizh (){
              <div className="quiz ">
         <h1 >Eary Test</h1>
         
-   
+           
+        <h2 className="score">Score: {score}</h2>
+        
+        {showFinalResults ?(
+    <div className="final-result">
+        <h1 >Final Result</h1>
+        <h2>
+            {score} out of {exams.results.length} correct - (
+            {(score / exams.results.length) * 100}%)
+          </h2>
+          <button className="btn1" onClick={() => restartQuiz()}>Restart Quiz</button>
+    </div>
+
+        ):(
     <div className="question-card ">
       {exams.loading===false&&exams.err==null&&(<>
         <h2 >Question {currentQuestion +1} out of {exams.results.length}</h2><br/><br/>
@@ -83,22 +98,22 @@ export function Quizh (){
                        
               
                 <li className="li1"
-                 onClick={() => optionClicked()}
+                 onClick={() => optionClicked(exams.results[currentQuestion].Ans_1)}
                 >
                   {exams.results[currentQuestion].Ans_1}
                 </li>
                 <li className="li1"
-                 onClick={() => optionClicked()}
+                 onClick={() => optionClicked(exams.results[currentQuestion].Ans_2)}
                 >
                   {exams.results[currentQuestion].Ans_2}
                 </li>
                 <li className="li1"
-                 onClick={() => optionClicked()}
+                 onClick={() => optionClicked(exams.results[currentQuestion].Ans_3)}
                 >
                   {exams.results[currentQuestion].Ans_3}
                 </li>
                 <li className="li1"
-                 onClick={() => optionClicked()}
+                 onClick={() => optionClicked(exams.results[currentQuestion].Ans_4)}
                 >
                   {exams.results[currentQuestion].Ans_4}
                 </li>
@@ -121,11 +136,11 @@ export function Quizh (){
                 )}
      </div>
         
-   
-    </div>
+        
+        )}</div>
         </>
 
-    );
+      );
 
 }
 

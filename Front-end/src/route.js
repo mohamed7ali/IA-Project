@@ -12,7 +12,8 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Guest from "./middleware/Guest";
 import { History } from "./Pages/history";
 import { EditQuestion } from "./Pages/Edit_question";
-import QuestionAdmin from "./Pages/QuestionsAdmin";
+import { QuestionsAdmin } from "./Pages/QuestionsAdmin";
+
 
 
 
@@ -72,11 +73,12 @@ export const routes = createBrowserRouter([
         path: "/edit",
         element: <EditQuestion />,
       },
-{
-  path:"/Questions",
-  element:<QuestionAdmin/>
+      {
+        path:"/QuestionsAdmin",
+        element:<QuestionsAdmin/>
 
-}
+      }
+
     ],
   },
   {

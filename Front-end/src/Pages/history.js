@@ -7,7 +7,7 @@ import axios from "axios";
 
 export const History = () => {
   const auth = getAuthUser();
-  //let {email}=auth.data.email;
+  
   
 console.log(auth.email)
   const [histories, setHistory] = useState({
@@ -36,10 +36,11 @@ console.log(auth.email)
   return (
     <>
       <Header />
-
+{histories.loading==true&&(<h1>loading</h1>)}
       <div className="table_container">
         <table>
           <thead>
+            
             <tr>
               <th>Exam Id</th>
               <th>Degree</th>
@@ -48,8 +49,9 @@ console.log(auth.email)
             </tr>
           </thead>
           <tbody>
-          {
-          histories.results.map((history) => (
+          
+            {histories.loading===false&&histories.err==null&&(<>
+             { histories.results.map((history) => (
             <tr>
               <td>{history.Id}</td>
               <td>{history.Degree}%</td>
@@ -58,6 +60,8 @@ console.log(auth.email)
             </tr>
 
           ))}
+            </>)}
+        
           </tbody>
         </table>
       </div>

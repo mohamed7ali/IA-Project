@@ -15,46 +15,46 @@ const Header = () => {
     removeAuthUser();
     navigate("/");
   };
-    return (
-        
+  return (
+
     <header>
-        
-        <div className='logo-container'>
-          <img src={logo} alt="Logo"></img>  
-        </div>
-      
-        
-           <HeaderLinks go_to={'/home'} name={"Home"} />
-           
- <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
-           <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
-          { auth&&auth.status!== 1&&
-           <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
-                     { auth&&auth.status=== 1&&
-           <HeaderLinks go_to={'/Questions'} name={" Questions   "} />}
 
-             {/* unAuthenticated Route  */}
-             {!auth && (
-              <>
-           <Button name={'Sign in'} go_to={'/'}/>
-           <Button name={'Sign up'} go_to={'/signup'}/>
-           
-              </>
-            )}
+      <div className='logo-container'>
+        <img src={logo} alt="Logo"></img>
+      </div>
 
-            {/* Admin Routes  */}
 
-           <DropDown />
-                        
+      <HeaderLinks go_to={'/home'} name={"Home"} />
+
+      <HeaderLinks go_to={'/QuizeInstruction'} name={"About Us"} />
+      <HeaderLinks go_to={'/contact'} name={"Contact Us"} />
+      {auth && auth.status !== 1 &&
+        <HeaderLinks go_to={'/quiz'} name={" Exam    "} />}
+      {auth && auth.status === 1 &&
+        <HeaderLinks go_to={'/QuestionsAdmin'} name={" Questions   "} />}
+
+      {/* unAuthenticated Route  */}
+      {!auth && (
+        <>
+          <Button name={'Sign in'} go_to={'/'} />
+          <Button name={'Sign up'} go_to={'/signup'} />
+
+        </>
+      )}
+
+      {/* Admin Routes  */}
+
+      <DropDown />
+
 
     </header>
-        
 
-        
 
-       
 
-    );
+
+
+
+  );
 };
 
 export default Header;

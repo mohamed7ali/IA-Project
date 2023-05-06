@@ -15,3 +15,4 @@ export const setAuthUser = (data) => {
   export const removeAuthUser = () => {
     if (localStorage.getItem("user")) localStorage.removeItem("user");
   };
+  
