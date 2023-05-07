@@ -76,6 +76,7 @@ const ProfileUpdateForm = () => {
               className="form-input"
               type="Email"
               name="Email"
+              placeholder={auth.Email}
               value={update.email}
               onChange={(e) => setUpdates({ ...update, email: e.target.value })}
             />
