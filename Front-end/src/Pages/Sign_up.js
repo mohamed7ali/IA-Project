@@ -12,6 +12,7 @@ const SignUp = () => {
     password: "",
     name: "",
     phone: "",
+    register:"",
     loading: false,
     err: [],
     text: "",
@@ -25,6 +26,7 @@ const SignUp = () => {
         Password: register.password,
         Name: register.name,
         Phone: register.phone,
+        Status:0,
       })
       .then((resp) => {
         setRegister({ ...register, loading: false, err: [], text: "" });
